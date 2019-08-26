@@ -17,3 +17,8 @@ noremap L $
 
 inoremap <c-j> <c-n>
 inoremap <c-k> <c-p>
+
+nnoremap <silent> [t :tabprevious<cr>
+nnoremap <silent> ]t :tabnext<cr>
+nnoremap <silent> [T :tabfirst<cr>
+nnoremap <silent> ]T :tablast<cr>
