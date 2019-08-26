@@ -5,6 +5,7 @@ if has("unix")
     echohl None
     finish
   else
+    set nomore
     echomsg "Setting up python support..."
     let s:commands = [
           \"python3 -m pip install virtualenv",
@@ -17,5 +18,6 @@ if has("unix")
       call setup_helpers#echomsg_list(systemlist(s:command))
     endfor
     runtime plugin/python_config.vim
+    set more
   endif
 endif
