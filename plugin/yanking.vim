@@ -1,0 +1,11 @@
+nnoremap gy "+y
+nnoremap gY "+Y
+nnoremap gp "+p
+nnoremap gP "+P
+nnoremap gop o<esc>"+p
+nnoremap gOp O<esc>"+p
+nnoremap goP o<esc>"+P
+nnoremap gOP O<esc>"+P
+inoremap <c-v> <esc>"+gpa
+inoremap <c-g><c-v> <c-v>
+vnoremap <c-v> "+p
