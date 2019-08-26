@@ -6,6 +6,7 @@
 .config/nvim
 ├── after
 │   └── ftplugin
+├── autoload
 ├── pack
 │   ├── features
 │   │   ├── opt
@@ -26,9 +27,16 @@
 │   │       │   └── plugin
 │   │       └── feature-theme
 │   │           └── plugin
-│   └── plugins
-│       └── opt
+│   └── setup
+│       ├── opt
+│       │   └── setup-python
+│       │       └── plugin
+│       └── start
+│           └── setup-common-helpers
+│               └── autoload
 └── plugin
+    ├── python_config.vim
+    └── visual.vim
 ```
 
 * `pack/plugins/opt`
@@ -37,5 +45,9 @@
 * `pack/features/start`
   Configuration for *features* - sets of related plugins. `opt` sudirectory for
   experimental or rarely used *features*.
+* `pack/setup/opt`
+  One time installation and setup scripts. Downloads plugins for use in *features*.
+* `pack/setup/start`
+  Helpers and common things for setup scripts.
 * `after/ftplugin`, `plugin`, `autoload`, etc.
   Common configuration that doesn't depend on any plugins.
