@@ -1,3 +1,21 @@
 [submodule "pack/plugins/opt/vim-surround"]
 	path = pack/plugins/opt/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "pack/plugins/opt/vim-polyglot"]
+	path = pack/plugins/opt/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "pack/plugins/opt/auto-pairs"]
+	path = pack/plugins/opt/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
+[submodule "pack/plugins/opt/vim-easy-align"]
+	path = pack/plugins/opt/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align
+[submodule "pack/plugins/opt/vim-sneak"]
+	path = pack/plugins/opt/vim-sneak
+	url = https://github.com/justinmk/vim-sneak
+[submodule "pack/plugins/opt/vim-commentary"]
+	path = pack/plugins/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "pack/plugins/opt/vim-vinegar"]
+	path = pack/plugins/opt/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar
