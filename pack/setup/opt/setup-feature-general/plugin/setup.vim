@@ -1,13 +1,4 @@
-let s:plugins = [
-      \"vim-surround",
-      \"vim-polyglot",
-      \"auto-pairs",
-      \"vim-easy-align",
-      \"vim-sneak",
-      \"vim-commentary",
-      \"vim-vinegar",
-      \]
-for s:plugin in s:plugins
+for s:plugin in feature_general#plugins
   set nomore
   echomsg "Setting up ".s:plugin." plugin"
   call setup_helpers#echomsg_list(systemlist("git --git-dir ".config#vim_home."/.git".
