@@ -19,3 +19,9 @@
 [submodule "pack/plugins/opt/vim-vinegar"]
 	path = pack/plugins/opt/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar
+[submodule "pack/plugins/opt/vim-misc"]
+	path = pack/plugins/opt/vim-misc
+	url = https://github.com/xolox/vim-misc
+[submodule "pack/plugins/opt/vim-session"]
+	path = pack/plugins/opt/vim-session
+	url = https://github.com/xolox/vim-session
