@@ -15,7 +15,7 @@ if has("unix")
           \"source ".config#python#py2_env_dir."/bin/activate && pip install pynvim",
           \]
     for s:command in s:commands
-      call setup_helpers#echomsg_list(systemlist(s:command))
+      call helpers#echomsg_list(systemlist(s:command))
     endfor
     runtime plugin/python_config.vim
     set more
