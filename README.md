@@ -28,12 +28,9 @@
 │   │       └── feature-theme
 │   │           └── plugin
 │   └── setup
-│       ├── opt
-│       │   └── setup-python
-│       │       └── plugin
-│       └── start
-│           └── setup-common-helpers
-│               └── autoload
+│       └── opt
+│           └── setup-python
+│               └── plugin
 └── plugin
     ├── python_config.vim
     └── visual.vim
@@ -47,7 +44,5 @@
   experimental or rarely used *features*.
 * `pack/setup/opt`
   One time installation and setup scripts. Downloads plugins for use in *features*.
-* `pack/setup/start`
-  Helpers and common things for setup scripts.
 * `after/ftplugin`, `plugin`, `autoload`, etc.
   Common configuration that doesn't depend on any plugins.
