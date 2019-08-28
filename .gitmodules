@@ -25,3 +25,9 @@
 [submodule "pack/plugins/opt/vim-session"]
 	path = pack/plugins/opt/vim-session
 	url = https://github.com/xolox/vim-session
+[submodule "pack/plugins/opt/fzf"]
+	path = pack/plugins/opt/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "pack/plugins/opt/fzf.vim"]
+	path = pack/plugins/opt/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
