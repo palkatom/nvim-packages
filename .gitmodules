@@ -31,3 +31,6 @@
 [submodule "pack/plugins/opt/fzf.vim"]
 	path = pack/plugins/opt/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+[submodule "pack/plugins/opt/vim-projectionist"]
+	path = pack/plugins/opt/vim-projectionist
+	url = https://github.com/tpope/vim-projectionist
