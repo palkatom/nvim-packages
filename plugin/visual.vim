@@ -1,5 +1,4 @@
 set number relativenumber numberwidth=5
-set signcolumn=yes
 let &listchars = "tab:\u00bb\ ,trail:\u2423"
 set list
 set nowrap sidescroll=35

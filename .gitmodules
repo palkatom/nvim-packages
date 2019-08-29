@@ -34,3 +34,9 @@
 [submodule "pack/plugins/opt/vim-projectionist"]
 	path = pack/plugins/opt/vim-projectionist
 	url = https://github.com/tpope/vim-projectionist
+[submodule "pack/plugins/opt/vim-fugitive"]
+	path = pack/plugins/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "pack/plugins/opt/vim-gitgutter"]
+	path = pack/plugins/opt/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
