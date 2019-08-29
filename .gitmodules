@@ -43,3 +43,6 @@
 [submodule "pack/plugins/opt/vim-one"]
 	path = pack/plugins/opt/vim-one
 	url = https://github.com/rakr/vim-one
+[submodule "pack/plugins/opt/lightline.vim"]
+	path = pack/plugins/opt/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
