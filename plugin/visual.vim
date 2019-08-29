@@ -3,6 +3,7 @@ let &listchars = "tab:\u00bb\ ,trail:\u2423"
 set list
 set nowrap sidescroll=35
 let &listchars .= ",precedes:\u27ea,extends:\u27eb"
+set noequalalways
 
 augroup colorcolumn_in_active_window
   autocmd!

@@ -40,3 +40,6 @@
 [submodule "pack/plugins/opt/vim-gitgutter"]
 	path = pack/plugins/opt/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+[submodule "pack/plugins/opt/vim-one"]
+	path = pack/plugins/opt/vim-one
+	url = https://github.com/rakr/vim-one
