@@ -46,19 +46,19 @@ function! s:lightline_filename_info()
       return expand("%:t")."@".Git_DiffType()
     endif
   endif
-  let l:short_dir = pathshorten(expand("%:p:h"))
+  let l:short_dir = pathshorten(expand("%:p:h"))."/"
   let l:filename = expand("%:t")
   if empty(l:filename)
     let l:filename = "[No Name]"
     let l:short_dir = ""
   endif
-  let l:filepath = expand(l:short_dir."/".l:filename)
+  let l:filepath = expand(l:short_dir.l:filename)
   let l:modified_flag = !&modifiable ? "[-]" :
         \&modified ? "[+]" : ""
   let l:readonly_flag = &readonly ? "[RO]" : ""
   return l:filepath.l:readonly_flag.l:modified_flag
 endfunction
-let s:SID = setup#get_SID(expand("%:~"))
+let s:SID = setup#get_SID(fnamemodify(expand("<sfile>"), ":~"))
 let g:lightline.component_function = {
       \"branch": "<SNR>".s:SID."_lightline_branch",
       \"filename_info": "<SNR>".s:SID."_lightline_filename_info",
