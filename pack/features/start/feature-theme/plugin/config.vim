@@ -24,10 +24,26 @@ function! s:lightline_branch()
       return "\u16a0 ".l:branch_name
     endif
   endif
-  return ''
+  return ""
 endfunction
 function! s:lightline_filename_info()
+  if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
+    if Terminal_IsTermBuffer(0)
+      return "term:".Terminal_Name(0)
+    endif
+  endif
   " TODO
+  let l:short_dir = pathshorten(expand("%:p:h"))
+  let l:filename = expand("%:t")
+  if empty(l:filename)
+    let l:filename = "[No Name]"
+    let l:short_dir = ""
+  endif
+  let l:filepath = expand(l:short_dir."/".l:filename)
+  let l:modified_flag = !&modifiable ? "[-]" :
+        \&modified ? "[+]" : ""
+  let l:readonly_flag = &readonly ? "[RO]" : ""
+  return l:filepath.l:readonly_flag.l:modified_flag
 endfunction
 let s:SID = setup#get_SID(expand("%:~"))
 let g:lightline.component_function = {
@@ -40,7 +56,7 @@ let g:lightline.active = {}
 let g:lightline.active.left = [
       \["mode"],
       \["branch"],
-      \["trunc"]
+      \["trunc", "filename_info"]
       \]
 let g:lightline.active.right = [
       \[],
