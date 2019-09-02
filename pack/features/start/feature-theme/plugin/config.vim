@@ -58,10 +58,31 @@ function! s:lightline_filename_info()
   let l:readonly_flag = &readonly ? "[RO]" : ""
   return l:filepath.l:readonly_flag.l:modified_flag
 endfunction
+function! s:lightline_session()
+  " TODO Sessions functions
+  if exists("*Sessions_Name()")
+    let l:session_name = Sessions_Name()
+  else
+    let l:session_name = ""
+  endif
+  return "$[".l:session_name."]"
+endfunction
+function! s:lightline_pyenv()
+  " TODO pyenv support (optional)
+  if exists("*Programming_PyenvName()")
+    let l:pyenv_name = Programming_PyenvName()
+    if !empty(l:pyenv_name)
+      return "<".l:pyenv_name.">"
+    endif
+  endif
+  return ""
+endfunction
 let s:SID = setup#get_SID(fnamemodify(expand("<sfile>"), ":~"))
 let g:lightline.component_function = {
       \"branch": "<SNR>".s:SID."_lightline_branch",
       \"filename_info": "<SNR>".s:SID."_lightline_filename_info",
+      \"session": "<SNR>".s:SID."_lightline_session",
+      \"pyenv": "<SNR>".s:SID."_lightline_pyenv",
       \}
 let g:lightline.tab_component_function = {
       \}
@@ -72,8 +93,17 @@ let g:lightline.active.left = [
       \["trunc", "filename_info"]
       \]
 let g:lightline.active.right = [
+      \["session"],
       \[],
-      \[],
+      \["pyenv"]
+      \]
+let g:lightline.inactive = {}
+let g:lightline.inactive.left = [
+      \["branch", "trunc", "filename_info"],
+      \[]
+      \]
+let g:lightline.inactive.right = [
+      \["session"],
       \[]
       \]
 
