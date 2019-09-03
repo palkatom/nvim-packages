@@ -77,12 +77,34 @@ function! s:lightline_pyenv()
   endif
   return ""
 endfunction
+function! s:lightline_file_info()
+  let l:filetype = "[".&filetype."]"
+  " Do not add other information for certain filetypes
+  let l:simple_filetypes = [
+        \"help",
+        \]
+  if index(l:simple_filetypes, &filetype) >= 0
+    return l:filetype
+  endif
+  if exists("*Terminal_IsTermBuffer()")
+    if Terminal_IsTermBuffer(0)
+      return ""
+    endif
+  endif
+  if winwidth(0) < 90
+    return ""
+  endif
+  let l:fileformat = &fileformat ==? "dos" ? "CRLF" : "LF"
+  let l:fileencoding = &fileencoding
+  return l:filetype.l:fileformat."/".l:fileencoding
+endfunction
 let s:SID = setup#get_SID(fnamemodify(expand("<sfile>"), ":~"))
 let g:lightline.component_function = {
       \"branch": "<SNR>".s:SID."_lightline_branch",
       \"filename_info": "<SNR>".s:SID."_lightline_filename_info",
       \"session": "<SNR>".s:SID."_lightline_session",
       \"pyenv": "<SNR>".s:SID."_lightline_pyenv",
+      \"file_info": "<SNR>".s:SID."_lightline_file_info",
       \}
 let g:lightline.tab_component_function = {
       \}
@@ -95,7 +117,7 @@ let g:lightline.active.left = [
 let g:lightline.active.right = [
       \["session"],
       \[],
-      \["pyenv"]
+      \["pyenv", "file_info"]
       \]
 let g:lightline.inactive = {}
 let g:lightline.inactive.left = [
