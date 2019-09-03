@@ -98,6 +98,32 @@ function! s:lightline_file_info()
   let l:fileencoding = &fileencoding
   return l:filetype.l:fileformat."/".l:fileencoding
 endfunction
+function! s:lightline_location()
+  if winwidth(0) < 75
+    return ""
+  endif
+  let l:line = line(".")
+  let l:column = col(".")
+  let l:percentage = float2nr(round(100.0*l:line/line("$")))
+  return printf("%4d:%03d|%3d%%", l:line, l:column, l:percentage)
+endfunction
+function! s:lightline_tabinfo(tabnum)
+  return "[".a:tabnum."](".tabpagewinnr(a:tabnum, "$").")"
+endfunction
+function! s:lightline_tabfile(tabnum)
+  let l:winnr = tabpagewinnr(a:tabnum)
+  let l:bufnr = tabpagebuflist(a:tabnum)[l:winnr - 1]
+  if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
+    if Terminal_IsTermBuffer(l:bufnr)
+      return "term:".Terminal_Name(l:bufnr)
+    endif
+  endif
+  let l:filename = fnamemodify(bufname(l:bufnr), ":t")
+  if empty(l:filename)
+    return "[No Name]"
+  endif
+  return l:filename
+endfunction
 let s:SID = setup#get_SID(fnamemodify(expand("<sfile>"), ":~"))
 let g:lightline.component_function = {
       \"branch": "<SNR>".s:SID."_lightline_branch",
@@ -105,8 +131,11 @@ let g:lightline.component_function = {
       \"session": "<SNR>".s:SID."_lightline_session",
       \"pyenv": "<SNR>".s:SID."_lightline_pyenv",
       \"file_info": "<SNR>".s:SID."_lightline_file_info",
+      \"location": "<SNR>".s:SID."_lightline_location",
       \}
 let g:lightline.tab_component_function = {
+      \"tabinfo": "<SNR>".s:SID."_lightline_tabinfo",
+      \"tabfile": "<SNR>".s:SID."_lightline_tabfile",
       \}
 let g:lightline.active = {}
 let g:lightline.active.left = [
@@ -115,7 +144,7 @@ let g:lightline.active.left = [
       \["trunc", "filename_info"]
       \]
 let g:lightline.active.right = [
-      \["session"],
+      \["session", "location"],
       \[],
       \["pyenv", "file_info"]
       \]
@@ -127,6 +156,17 @@ let g:lightline.inactive.left = [
 let g:lightline.inactive.right = [
       \["session"],
       \[]
+      \]
+let g:lightline.tab = {}
+let g:lightline.tab.active = [
+      \"tabinfo",
+      \"tabfile",
+      \"modified",
+      \]
+let g:lightline.tab.inactive = [
+      \"tabinfo",
+      \"tabfile",
+      \"modified",
       \]
 
 call feature_helpers#load_plugins(feature_theme#plugins)
