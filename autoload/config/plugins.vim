@@ -1,1 +1,1 @@
-let config#plugins#submodules_dir = expand("pack/plugins/opt")
+let config#plugins#submodules_dir = expand(config#vim_home."/plugins")

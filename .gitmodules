@@ -1,51 +1,51 @@
-[submodule "pack/plugins/opt/vim-surround"]
-	path = pack/plugins/opt/vim-surround
-	url = https://github.com/tpope/vim-surround
-[submodule "pack/plugins/opt/vim-polyglot"]
-	path = pack/plugins/opt/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot
-[submodule "pack/plugins/opt/auto-pairs"]
-	path = pack/plugins/opt/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
-[submodule "pack/plugins/opt/vim-easy-align"]
-	path = pack/plugins/opt/vim-easy-align
-	url = https://github.com/junegunn/vim-easy-align
-[submodule "pack/plugins/opt/vim-sneak"]
-	path = pack/plugins/opt/vim-sneak
-	url = https://github.com/justinmk/vim-sneak
-[submodule "pack/plugins/opt/vim-commentary"]
-	path = pack/plugins/opt/vim-commentary
-	url = https://github.com/tpope/vim-commentary
-[submodule "pack/plugins/opt/vim-vinegar"]
-	path = pack/plugins/opt/vim-vinegar
-	url = https://github.com/tpope/vim-vinegar
-[submodule "pack/plugins/opt/vim-misc"]
-	path = pack/plugins/opt/vim-misc
-	url = https://github.com/xolox/vim-misc
-[submodule "pack/plugins/opt/vim-session"]
-	path = pack/plugins/opt/vim-session
-	url = https://github.com/xolox/vim-session
-[submodule "pack/plugins/opt/fzf"]
-	path = pack/plugins/opt/fzf
-	url = https://github.com/junegunn/fzf
-[submodule "pack/plugins/opt/fzf.vim"]
-	path = pack/plugins/opt/fzf.vim
-	url = https://github.com/junegunn/fzf.vim
-[submodule "pack/plugins/opt/vim-projectionist"]
-	path = pack/plugins/opt/vim-projectionist
-	url = https://github.com/tpope/vim-projectionist
-[submodule "pack/plugins/opt/vim-fugitive"]
-	path = pack/plugins/opt/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-[submodule "pack/plugins/opt/vim-gitgutter"]
-	path = pack/plugins/opt/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter
-[submodule "pack/plugins/opt/vim-one"]
-	path = pack/plugins/opt/vim-one
-	url = https://github.com/rakr/vim-one
-[submodule "pack/plugins/opt/lightline.vim"]
-	path = pack/plugins/opt/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
-[submodule "pack/plugins/opt/neoterm"]
-	path = pack/plugins/opt/neoterm
-	url = https://github.com/kassio/neoterm
+[submodule "plugins/vim-surround"]
+    path = plugins/vim-surround
+    url = https://github.com/tpope/vim-surround
+[submodule "plugins/vim-polyglot"]
+    path = plugins/vim-polyglot
+    url = https://github.com/sheerun/vim-polyglot
+[submodule "plugins/auto-pairs"]
+    path = plugins/auto-pairs
+    url = https://github.com/jiangmiao/auto-pairs
+[submodule "plugins/vim-easy-align"]
+    path = plugins/vim-easy-align
+    url = https://github.com/junegunn/vim-easy-align
+[submodule "plugins/vim-sneak"]
+    path = plugins/vim-sneak
+    url = https://github.com/justinmk/vim-sneak
+[submodule "plugins/vim-commentary"]
+    path = plugins/vim-commentary
+    url = https://github.com/tpope/vim-commentary
+[submodule "plugins/vim-vinegar"]
+    path = plugins/vim-vinegar
+    url = https://github.com/tpope/vim-vinegar
+[submodule "plugins/vim-misc"]
+    path = plugins/vim-misc
+    url = https://github.com/xolox/vim-misc
+[submodule "plugins/vim-session"]
+    path = plugins/vim-session
+    url = https://github.com/xolox/vim-session
+[submodule "plugins/fzf"]
+    path = plugins/fzf
+    url = https://github.com/junegunn/fzf
+[submodule "plugins/fzf.vim"]
+    path = plugins/fzf.vim
+    url = https://github.com/junegunn/fzf.vim
+[submodule "plugins/vim-projectionist"]
+    path = plugins/vim-projectionist
+    url = https://github.com/tpope/vim-projectionist
+[submodule "plugins/vim-fugitive"]
+    path = plugins/vim-fugitive
+    url = https://github.com/tpope/vim-fugitive
+[submodule "plugins/vim-gitgutter"]
+    path = plugins/vim-gitgutter
+    url = https://github.com/airblade/vim-gitgutter
+[submodule "plugins/vim-one"]
+    path = plugins/vim-one
+    url = https://github.com/rakr/vim-one
+[submodule "plugins/lightline.vim"]
+    path = plugins/lightline.vim
+    url = https://github.com/itchyny/lightline.vim
+[submodule "plugins/neoterm"]
+    path = plugins/neoterm
+    url = https://github.com/kassio/neoterm
