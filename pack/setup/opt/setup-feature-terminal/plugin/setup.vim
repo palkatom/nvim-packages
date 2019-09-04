@@ -1,1 +1,1 @@
-call setup#init_plugins(feature_terminal#plugins)
+call setup#init_plugins(feature#terminal#plugins)

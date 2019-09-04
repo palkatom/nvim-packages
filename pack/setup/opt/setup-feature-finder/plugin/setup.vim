@@ -1,4 +1,4 @@
-call setup#init_plugins(feature_finder#plugins)
+call setup#init_plugins(feature#finder#plugins)
 " Download fzf binary automatically
 " Seems to be available only on unix
 if has("unix")

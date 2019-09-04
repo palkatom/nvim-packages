@@ -1,1 +1,1 @@
-call setup#init_plugins(feature_git#plugins)
+call setup#init_plugins(feature#git#plugins)

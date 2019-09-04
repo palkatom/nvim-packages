@@ -1,1 +1,1 @@
-call setup#init_plugins(feature_general#plugins)
+call setup#init_plugins(feature#general#plugins)

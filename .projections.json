@@ -2,27 +2,27 @@
     "pack/setup/opt/setup-feature-*/plugin/setup.vim": {
         "type": "setup",
         "template": [
-            "call setup#init_plugins(feature_{}#plugins)"
+            "call setup#init_plugins(feature#{}#plugins)"
         ]
     },
-    "pack/features/start/feature-*/plugin/config.vim": {
+    "pack/features/start/*/plugin/config.vim": {
         "type": "feature",
-        "alternate": "pack/features/start/feature-{}/autoload/feature_{}.vim",
+        "alternate": "pack/features/start/{}/autoload/feature/{}.vim",
         "template": [
-            "call feature_helpers#load_plugins(feature_{}#plugins)"
+            "call feature#helpers#load_plugins(feature#{}#plugins)"
         ]
     },
-    "pack/features/opt/feature-*/plugin/config.vim": {
+    "pack/features/opt/*/plugin/config.vim": {
         "type": "ofeature",
-        "alternate": "pack/features/opt/feature-{}/autoload/feature_{}.vim",
+        "alternate": "pack/features/opt/{}/autoload/feature#{}.vim",
         "template": [
             "silent packadd setup-feature-{}",
-            "call feature_helpers#load_plugins(feature_{}#plugins)"
+            "call feature#helpers#load_plugins(feature#{}#plugins)"
         ]
     },
-    "**/feature_*.vim": {
+    "**/autoload/feature/*.vim": {
         "template": [
-            "let feature_{basename}#plugins = []"
+            "let feature#{basename}#plugins = []"
         ]
     }
 }

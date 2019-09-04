@@ -1,2 +1,2 @@
-call setup#init_plugins(feature_sessions#plugins)
+call setup#init_plugins(feature#sessions#plugins)
 

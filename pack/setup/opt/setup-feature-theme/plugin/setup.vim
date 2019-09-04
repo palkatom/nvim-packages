@@ -1,1 +1,1 @@
-call setup#init_plugins(feature_theme#plugins)
+call setup#init_plugins(feature#theme#plugins)

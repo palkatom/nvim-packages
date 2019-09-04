@@ -1,2 +1,4 @@
-call setup#init_plugins(feature_project#plugins)
+" Load list of scripts in case of setup called manually
+execute "source ".config#vim_home."/pack/features/opt/**/project.vim"
+call setup#init_plugins(feature#project#plugins)
 
