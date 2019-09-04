@@ -46,3 +46,6 @@
 [submodule "pack/plugins/opt/lightline.vim"]
 	path = pack/plugins/opt/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+[submodule "pack/plugins/opt/neoterm"]
+	path = pack/plugins/opt/neoterm
+	url = https://github.com/kassio/neoterm
