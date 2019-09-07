@@ -1,3 +1,8 @@
+if exists("g:config_python_loaded")
+  finish
+endif
+let g:config_python_loaded = 1
+
 if has("unix")
   if !executable("python2") || !executable("python3")
     echohl WarningMsg
