@@ -1,5 +1,5 @@
 {
-    "pack/setup/opt/setup-feature-*/plugin/setup.vim": {
+    "pack/setup/opt/setup-*/plugin/setup.vim": {
         "type": "setup",
         "template": [
             "call setup#init_plugins(feature#{}#plugins)"
@@ -16,8 +16,17 @@
         "type": "ofeature",
         "alternate": "pack/features/opt/{}/autoload/feature#{}.vim",
         "template": [
-            "silent packadd setup-feature-{}",
+            "silent packadd setup-{}",
             "call feature#helpers#load_plugins(feature#{}#plugins)"
+        ]
+    },
+    "pack/config/opt/config-*/plugin/setup.vim": {
+        "type": "config",
+        "template": [
+            "if exists(\"g:config_{}_loaded\")",
+            "  finish",
+            "endif",
+            "let g:config_{}_loaded = 1"
         ]
     },
     "**/autoload/feature/*.vim": {

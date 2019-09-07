@@ -15,5 +15,5 @@ function! Project_RootDir()
 endfunction
 
 " Always setup optional feature
-silent packadd setup-feature-project
+silent packadd setup-project
 call feature#helpers#load_plugins(feature#project#plugins)
