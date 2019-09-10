@@ -14,7 +14,7 @@
     },
     "pack/features/opt/*/plugin/config.vim": {
         "type": "ofeature",
-        "alternate": "pack/features/opt/{}/autoload/feature#{}.vim",
+        "alternate": "pack/features/opt/{}/autoload/feature/{}.vim",
         "template": [
             "silent packadd setup-{}",
             "call feature#helpers#load_plugins(feature#{}#plugins)"

@@ -49,3 +49,6 @@
 [submodule "plugins/neoterm"]
     path = plugins/neoterm
     url = https://github.com/kassio/neoterm
+[submodule "plugins/ultisnips"]
+	path = plugins/ultisnips
+	url = https://github.com/sirver/ultisnips
