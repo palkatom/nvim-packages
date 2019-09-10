@@ -52,3 +52,6 @@
 [submodule "plugins/ultisnips"]
 	path = plugins/ultisnips
 	url = https://github.com/sirver/ultisnips
+[submodule "plugins/vim-test"]
+	path = plugins/vim-test
+	url = https://github.com/janko-m/vim-test

@@ -18,5 +18,8 @@ function! Terminal_Name(bufnr)
   let l:bufname = s:get_bufname(a:bufnr)
   return matchstr(split(l:bufname)[0], '\v\/\zs[^/]*$')
 endfunction
+function! Terminal_Type()
+  return "neoterm"
+endfunction
 
 call feature#helpers#load_plugins(feature#terminal#plugins)
