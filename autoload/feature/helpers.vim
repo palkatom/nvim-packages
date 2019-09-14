@@ -16,8 +16,7 @@ endfunction
 function! s:load_plugin(plugin)
     " Add plugins directory for manual loading
   call s:insert_into_rtp(g:config#plugins#submodules_dir, 0)
-  " load plugin (TODO runtime files to load in correct order to follow
-  " based on log)
+  " load plugin
   execute "runtime! ".a:plugin."/ftdetect/**/*.vim"
   execute "runtime! ".a:plugin."/plugin/**/*.vim"
   " Remove plugins directory
