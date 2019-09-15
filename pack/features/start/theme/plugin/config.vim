@@ -124,7 +124,7 @@ function! s:lightline_tabfile(tabnum)
   endif
   return l:filename
 endfunction
-let s:SID = setup#get_SID(expand("<sfile>"))
+let s:SID = helpers#get_SID(expand("<sfile>"))
 let g:lightline.component_function = {
       \"branch": "<SNR>".s:SID."_lightline_branch",
       \"filename_info": "<SNR>".s:SID."_lightline_filename_info",
