@@ -3,6 +3,7 @@ call GuiClipboard()
 GuiTabline 0
 GuiPopupmenu 0
 call GuiWindowMaximized(1)
+call GuiMousehide(1)
 
 function! s:toggle_fullscreen()
   if g:GuiWindowFullScreen

@@ -1,3 +1,10 @@
+function! s:shell_eol()
+  if has("win32") || has("win64")
+    return "\u000d"
+  else
+    return ""
+  endif
+endfunction
 function! s:terminal_start(mods)
   " Start terminal in:
   "   project root,
@@ -20,16 +27,16 @@ function! s:terminal_start(mods)
   " Start terminal
   call neoterm#new({"mod": a:mods})
   " Go to the working directory
-  call neoterm#do({"cmd": "cd ".l:working_dir})
+  call neoterm#do({"cmd": "cd ".l:working_dir.<SID>shell_eol()})
   " If pyenv is activated, activate it in terminal as well
   let l:pyenv_name = ""
   if exists("*Programming_PyenvName()")
     let l:pyenv_name = Programming_PyenvName()
   endif
   if !empty(l:pyenv_name) && exists("*Programming_PyenvRootDir()")
-    call neoterm#do({"cmd": "source ".Programming_PyenvRootDir()."/bin/activate"})
+    call neoterm#do({"cmd": "source ".Programming_PyenvRootDir()."/bin/activate".<SID>shell_eol()})
   endif
 endfunction
 
 command! -bar Tnew call <SID>terminal_start(<q-mods>)
-command! -range=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>, "target": <count>, "mods": <q-mods>})
+command! -range=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <count>, "mods": <q-mods>})
