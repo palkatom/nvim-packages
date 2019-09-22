@@ -22,3 +22,6 @@ nnoremap <silent> [t :tabprevious<cr>
 nnoremap <silent> ]t :tabnext<cr>
 nnoremap <silent> [T :tabfirst<cr>
 nnoremap <silent> ]T :tablast<cr>
+
+nnoremap <silent> [q :cprevious<cr>
+nnoremap <silent> ]q :cnext<cr>
