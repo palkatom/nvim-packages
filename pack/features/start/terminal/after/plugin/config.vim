@@ -6,6 +6,15 @@ function! s:shell_eol()
   endif
 endfunction
 function! s:terminal_start(mods)
+  " Do not open new terminal if there is already one in a tabpage, open it
+  " instead (may be not the best idea - FIXME)
+  " Idea is to use -bang attribute to allow adding more terminals to tabpage,
+  " but I need to figure out how to handle case when multiple terminals are
+  " opened and then closed (t:neoterm_id flag is cleared then)
+  if exists("t:neoterm_id")
+    Topen
+    return
+  endif
   " Start terminal in:
   "   project root,
   "   git root,
@@ -37,6 +46,14 @@ function! s:terminal_start(mods)
     call neoterm#do({"cmd": "source ".Programming_PyenvRootDir()."/bin/activate".<SID>shell_eol()})
   endif
 endfunction
-
 command! -bar Tnew call <SID>terminal_start(<q-mods>)
-command! -range=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <count>, "mods": <q-mods>})
+
+function! s:get_tab_terminal(terminal_number)
+  " FIXME How to handle multiple tabpage terminals (see comment for
+  " terminal_start function)
+  if exists("t:neoterm_id")
+    return t:neoterm_id
+  endif
+  return a:terminal_number
+endfunction
+command! -count=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mods": <q-mods>})
