@@ -11,7 +11,7 @@ function! s:check_submodule_changes(plugin)
 endfunction
 
 function! health_helpers#check_submodules_initialized(plugins)
-  call health#report_start("Check general plugins availability")
+  call health#report_start("Check plugins availability")
   for plugin in a:plugins
     if !s:check_submodule_initialized(plugin)
       call health#report_error("Git submodule for ".plugin." is not initialized",
