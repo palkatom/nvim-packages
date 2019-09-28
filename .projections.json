@@ -30,8 +30,17 @@
         ]
     },
     "**/autoload/feature/*.vim": {
+        "type": "list",
         "template": [
             "let feature#{basename}#plugins = []"
+        ]
+    },
+    "**/autoload/health/feature_*.vim": {
+        "type": "health",
+        "template": [
+            "function! health#feature_{basename}#check()",
+            "  call health_helpers#check_submodules_initialized(g:feature#{basename}#plugins)",
+            "endfunction"
         ]
     }
 }
