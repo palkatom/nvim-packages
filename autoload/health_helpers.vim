@@ -2,7 +2,7 @@ let s:plugins_dir = fnamemodify(g:config#plugins#submodules_dir, ":t")
 
 function! s:check_submodule_initialized(plugin)
   return system("cd ".g:config#vim_home." && ".
-        \"git submodule status ".s:plugins_dir."/".a:plugin)[0] !=# '-'
+        \"git submodule status ".s:plugins_dir."/".a:plugin)[0] =~# '[ +]'
 endfunction
 
 function! s:check_submodule_changes(plugin)

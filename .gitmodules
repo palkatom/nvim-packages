@@ -55,3 +55,15 @@
 [submodule "plugins/vim-test"]
 	path = plugins/vim-test
 	url = https://github.com/janko-m/vim-test
+[submodule "plugins/async.vim"]
+	path = plugins/async.vim
+	url = https://github.com/prabirshrestha/async.vim
+[submodule "plugins/vim-lsp"]
+	path = plugins/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "plugins/asyncomplete.vim"]
+	path = plugins/asyncomplete.vim
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "plugins/asyncomplete-lsp.vim"]
+	path = plugins/asyncomplete-lsp.vim
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
