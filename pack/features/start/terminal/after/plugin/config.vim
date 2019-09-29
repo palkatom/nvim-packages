@@ -12,7 +12,7 @@ function! s:terminal_start(mods)
   " but I need to figure out how to handle case when multiple terminals are
   " opened and then closed (t:neoterm_id flag is cleared then)
   if exists("t:neoterm_id")
-    Topen
+    execute "Topen"
     return
   endif
   " Start terminal in:
