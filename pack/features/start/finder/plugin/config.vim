@@ -12,7 +12,7 @@ function! s:find_git_branches()
   " Does not create branches #TODO
   let l:dict = {"source": "git branch -a"}
   function! l:dict.sink(lines)
-    " Current branch is marked with '*'
+    " Current branch is marked with '*' - do nothing in this case
     if a:lines !~ '\v^\s*\*'
       let l:remote_branch_name_pattern = '\v^\s*remotes/[^/]*/\zs.*\ze$'
       if a:lines =~# l:remote_branch_name_pattern
@@ -27,6 +27,12 @@ function! s:find_git_branches()
 endfunction
 command! -nargs=0 Branches call <SID>find_git_branches()
 nnoremap <silent> <c-s>gb :Branches<cr>
+
+function! s:new_branch(branch_name)
+  execute "!git checkout -b ".a:branch_name
+endfunction
+command! -nargs=1 BranchNew call <SID>new_branch(<args>)
+nnoremap <leader>gn :BranchNew<space>
 
 nnoremap <silent> <c-s>b :Buffers<cr>
 
