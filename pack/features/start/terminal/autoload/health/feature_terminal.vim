@@ -15,8 +15,8 @@ function! s:check_terminal_directory_change()
     call health#report_error("Changing directory didn't happen",
           \["Check Tnew command"])
   else
-    let l:last_line = l:lines[-1]
-    let l:next_dir = matchstr(l:last_line, '^'.escape(matchstr(l:cd_cmd, '>cd \zs.*'), '\').'\ze>')
+    let l:next_line = l:lines[l:pos]
+    let l:next_dir = matchstr(l:next_line, '^'.escape(matchstr(l:cd_cmd, '>cd \zs.*'), '\').'\ze>')
     if empty(l:next_dir)
       call health#report_error("Directory was not changed successfully",
             \["Check Tnew command",
@@ -26,5 +26,4 @@ function! s:check_terminal_directory_change()
     endif
   endif
   execute l:tid."T exit"
-  return l:lines
 endfunction
