@@ -177,3 +177,4 @@ colorscheme one
 highlight! link Folded FoldColumn
 highlight! link VertSplit StatusLineNC
 let &fillchars = "vert:\ "
+highlight! link LightlineMiddle_inactive VertSplit
