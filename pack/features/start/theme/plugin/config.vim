@@ -29,7 +29,6 @@ function! s:lightline_branch()
 endfunction
 
 function! s:lightline_filename_info()
-  " TODO Terminal functions
   if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
     if Terminal_IsTermBuffer(0)
       return "term:".Terminal_Name(0)
@@ -42,7 +41,6 @@ function! s:lightline_filename_info()
   if index(s:simple_filename_filetypes, &filetype) >= 0
     return expand("%:t")
   endif
-  " TODO Git functions
   if exists("*Git_IsGitBuffer()") && exists("*Git_DiffType()")
     if Git_IsGitBuffer()
       return expand("%:t")."@".Git_DiffType()
@@ -62,7 +60,6 @@ function! s:lightline_filename_info()
 endfunction
 
 function! s:lightline_session()
-  " TODO Sessions functions
   if exists("*Sessions_Name()")
     let l:session_name = Sessions_Name()
   else
