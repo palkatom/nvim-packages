@@ -37,4 +37,10 @@ endfunction
 set updatetime=100
 set signcolumn=yes
 
+function! s:new_branch(branch_name)
+  execute "!git checkout -b ".a:branch_name
+endfunction
+command! -nargs=1 BranchNew call <SID>new_branch("<args>")
+nnoremap <leader>gn :BranchNew<space>
+
 call feature#helpers#load_plugins(feature#git#plugins)

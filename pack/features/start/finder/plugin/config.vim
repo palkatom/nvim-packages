@@ -28,12 +28,6 @@ endfunction
 command! -nargs=0 Branches call <SID>find_git_branches()
 nnoremap <silent> <c-s>gb :Branches<cr>
 
-function! s:new_branch(branch_name)
-  execute "!git checkout -b ".a:branch_name
-endfunction
-command! -nargs=1 BranchNew call <SID>new_branch(<args>)
-nnoremap <leader>gn :BranchNew<space>
-
 nnoremap <silent> <c-s>b :Buffers<cr>
 
 call feature#helpers#load_plugins(feature#finder#plugins)
