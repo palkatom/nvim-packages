@@ -14,3 +14,5 @@ function! s:toggle_fullscreen()
   call GuiWindowFullScreen(l:set_flag)
 endfunction
 nnoremap <F11> :call <SID>toggle_fullscreen()<cr>
+
+execute "cd $HOME"
