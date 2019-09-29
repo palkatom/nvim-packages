@@ -5,12 +5,15 @@ function! Git_RootDir()
   endif
   return expand(l:git_root_dir)
 endfunction
+
 function! Git_Head()
   return FugitiveHead(8)
 endfunction
+
 function! Git_IsGitBuffer()
   return expand("%:p") =~# '\v^fugitive:[\\/]{2}'
 endfunction
+
 function! Git_DiffType()
   let l:git_buf_type = matchstr(expand("%:p"), '\v\.git[\\/]{2}\zs\c[0-9a-f]+\ze[\\/]')
   if empty(l:git_buf_type)
