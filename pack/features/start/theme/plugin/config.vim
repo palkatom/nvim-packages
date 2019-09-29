@@ -13,6 +13,7 @@ let g:lightline.component_visible_condition = {
 let g:lightline.component_type = {
       \"trunc": "raw",
       \}
+
 function! s:lightline_branch()
   if exists("*Git_Head()")
     let l:branch_name = Git_Head()
@@ -26,6 +27,7 @@ function! s:lightline_branch()
   endif
   return ""
 endfunction
+
 function! s:lightline_filename_info()
   " TODO Terminal functions
   if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
@@ -58,6 +60,7 @@ function! s:lightline_filename_info()
   let l:readonly_flag = &readonly ? "[RO]" : ""
   return l:filepath.l:readonly_flag.l:modified_flag
 endfunction
+
 function! s:lightline_session()
   " TODO Sessions functions
   if exists("*Sessions_Name()")
@@ -67,6 +70,7 @@ function! s:lightline_session()
   endif
   return "$[".l:session_name."]"
 endfunction
+
 function! s:lightline_pyenv()
   " TODO pyenv support (optional)
   if exists("*Programming_PyenvName()")
@@ -77,6 +81,7 @@ function! s:lightline_pyenv()
   endif
   return ""
 endfunction
+
 function! s:lightline_file_info()
   let l:filetype = "[".&filetype."]"
   " Do not add other information for certain filetypes
@@ -98,6 +103,7 @@ function! s:lightline_file_info()
   let l:fileencoding = &fileencoding
   return l:filetype.l:fileformat."/".l:fileencoding
 endfunction
+
 function! s:lightline_location()
   if winwidth(0) < 75
     return ""
@@ -107,9 +113,11 @@ function! s:lightline_location()
   let l:percentage = float2nr(round(100.0*l:line/line("$")))
   return printf("%4d:%03d|%3d%%", l:line, l:column, l:percentage)
 endfunction
+
 function! s:lightline_tabinfo(tabnum)
   return "[".a:tabnum."](".tabpagewinnr(a:tabnum, "$").")"
 endfunction
+
 function! s:lightline_tabfile(tabnum)
   let l:winnr = tabpagewinnr(a:tabnum)
   let l:bufnr = tabpagebuflist(a:tabnum)[l:winnr - 1]
@@ -124,6 +132,7 @@ function! s:lightline_tabfile(tabnum)
   endif
   return l:filename
 endfunction
+
 let s:SID = helpers#get_SID(expand("<sfile>"))
 let g:lightline.component_function = {
       \"branch": "<SNR>".s:SID."_lightline_branch",
