@@ -35,6 +35,7 @@ function! s:terminal_start(mods)
   endif
   " Start terminal
   call neoterm#new({"mod": a:mods})
+  sleep 200m
   " Go to the working directory
   call neoterm#do({"cmd": "cd ".l:working_dir.<SID>shell_eol()})
   " If pyenv is activated, activate it in terminal as well
@@ -57,3 +58,5 @@ function! s:get_tab_terminal(terminal_number)
   return a:terminal_number
 endfunction
 command! -count=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mods": <q-mods>})
+
+command! -nargs=0 Texit T exit
