@@ -67,3 +67,6 @@
 [submodule "plugins/asyncomplete-lsp.vim"]
 	path = plugins/asyncomplete-lsp.vim
 	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim
+[submodule "plugins/asyncomplete-ultisnips.vim"]
+	path = plugins/asyncomplete-ultisnips.vim
+	url = https://github.com/prabirshrestha/asyncomplete-ultisnips.vim

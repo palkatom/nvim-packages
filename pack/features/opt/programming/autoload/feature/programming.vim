@@ -4,4 +4,5 @@ let feature#programming#plugins = [
       \"vim-lsp",
       \"asyncomplete.vim",
       \"asyncomplete-lsp.vim",
+      \"asyncomplete-ultisnips.vim",
       \]
