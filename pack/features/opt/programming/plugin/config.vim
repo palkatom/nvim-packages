@@ -16,10 +16,13 @@ if executable("pyls")
           \})
   augroup end
 endif
-call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-      \"name": "ultisnips",
-      \"whitelist": ["*"],
-      \"completor": function("asyncomplete#sources#ultisnips#completor"),
-      \}))
+if executable("clangd-8")
+  augroup cpp_lsp
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \"name": "clangd",
+          \"cmd": {server_info->["clangd-8", "-background-index"]},
+          \"whitelist": ["cpp", "cc", "objc", "objcpp", "c"]
+          \})
 " Enable LSP explicitly as it can be loaded on-demand
 call lsp#enable()
