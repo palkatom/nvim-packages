@@ -20,7 +20,7 @@ function! s:check_terminal_directory_change()
     if has("unix")
       let l:target_dir = substitute(l:target_dir, $HOME, '~', '')
     endif
-    let l:next_dir = matchstr(l:next_line, escape(l:target_dir, '\').'\ze\s*[>$]')
+    let l:next_dir = matchstr(l:next_line, escape(l:target_dir, '~\').'\ze\s*[>$]')
     if empty(l:next_dir)
       call health#report_error("Directory was not changed successfully",
             \["Check Tnew command",
