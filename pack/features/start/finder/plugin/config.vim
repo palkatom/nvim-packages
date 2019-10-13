@@ -2,7 +2,7 @@ let g:fzf_layout = {"window": "botright 12 split enew"}
 
 function! s:find_in_git_files_first()
   let l:output = execute("GitFiles")
-  if l:output ==? "Not in git repo"
+  if l:output =~? "Not in git repo"
     execute "Files"
   endif
 endfunction
