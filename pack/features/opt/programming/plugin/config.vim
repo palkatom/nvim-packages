@@ -24,5 +24,7 @@ if executable("clangd-8")
           \"cmd": {server_info->["clangd-8", "-background-index"]},
           \"whitelist": ["cpp", "cc", "objc", "objcpp", "c"]
           \})
+  augroup end
+endif
 " Enable LSP explicitly as it can be loaded on-demand
 call lsp#enable()
