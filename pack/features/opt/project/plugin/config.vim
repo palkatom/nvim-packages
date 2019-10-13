@@ -14,6 +14,4 @@ function! Project_RootDir()
   return projectionist#path()
 endfunction
 
-" Always setup optional feature
-silent packadd setup-project
 call feature#helpers#load_plugins(feature#project#plugins)
