@@ -1,9 +1,3 @@
-function! helpers#echomsg_list(msgs)
-  for msg in a:msgs
-    echomsg(msg)
-  endfor
-endfunction
-
 function! helpers#get_SID(path)
   let l:scriptnames = split(execute("scriptnames"), "\n")
   for scriptline in l:scriptnames
