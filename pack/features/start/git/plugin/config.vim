@@ -43,4 +43,4 @@ endfunction
 command! -nargs=1 BranchNew call <SID>new_branch("<args>")
 nnoremap <leader>gn :BranchNew<space>
 
-call feature#helpers#load_plugins(feature#git#plugins)
+call commons#features#load_plugins(feature#git#plugins)

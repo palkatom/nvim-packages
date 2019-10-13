@@ -2,7 +2,7 @@ if exists("*Terminal_Type()")
   let g:test#strategy = Terminal_Type()
 endif
 
-call feature#helpers#load_plugins(feature#programming#plugins)
+call commons#features#load_plugins(feature#programming#plugins)
 
 " Register servers
 if executable("pyls")

@@ -25,4 +25,4 @@ function! Terminal_Type()
   return "neoterm"
 endfunction
 
-call feature#helpers#load_plugins(feature#terminal#plugins)
+call commons#features#load_plugins(feature#terminal#plugins)

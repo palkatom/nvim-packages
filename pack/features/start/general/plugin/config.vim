@@ -3,4 +3,4 @@ vmap <leader>= <Plug>(EasyAlign)
 
 let g:sneak#label = 1
 
-call feature#helpers#load_plugins(feature#general#plugins)
+call commons#features#load_plugins(feature#general#plugins)

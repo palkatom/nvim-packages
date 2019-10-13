@@ -9,4 +9,4 @@ function! Sessions_Name()
   return xolox#session#find_current_session()
 endfunction
 
-call feature#helpers#load_plugins(feature#sessions#plugins)
+call commons#features#load_plugins(feature#sessions#plugins)

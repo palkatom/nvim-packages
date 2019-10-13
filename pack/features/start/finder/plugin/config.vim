@@ -30,4 +30,4 @@ nnoremap <silent> <c-s>gb :Branches<cr>
 
 nnoremap <silent> <c-s>b :Buffers<cr>
 
-call feature#helpers#load_plugins(feature#finder#plugins)
+call commons#features#load_plugins(feature#finder#plugins)

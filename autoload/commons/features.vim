@@ -1,4 +1,4 @@
-function! feature#helpers#load_plugins(plugins)
+function! commons#features#load_plugins(plugins)
   for plugin in a:plugins
     let l:first_after_idx = match(split(&runtimepath, ","), '\v[\\/]after$')
     call s:insert_into_rtp(g:config#plugins#submodules_dir."/".plugin."/after", l:first_after_idx)

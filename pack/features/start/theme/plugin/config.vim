@@ -175,7 +175,7 @@ let g:lightline.tab.inactive = [
       \"modified",
       \]
 
-call feature#helpers#load_plugins(feature#theme#plugins)
+call commons#features#load_plugins(feature#theme#plugins)
 
 syntax on
 set background=dark

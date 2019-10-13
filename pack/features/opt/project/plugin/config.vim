@@ -14,4 +14,4 @@ function! Project_RootDir()
   return projectionist#path()
 endfunction
 
-call feature#helpers#load_plugins(feature#project#plugins)
+call commons#features#load_plugins(feature#project#plugins)
