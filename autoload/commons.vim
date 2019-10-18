@@ -1,4 +1,4 @@
-function! helpers#get_SID(path)
+function! commons#get_SID(path)
   let l:scriptnames = split(execute("scriptnames"), "\n")
   for scriptline in l:scriptnames
     let scriptline = trim(scriptline)

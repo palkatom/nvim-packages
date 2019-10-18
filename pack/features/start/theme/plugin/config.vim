@@ -130,7 +130,7 @@ function! s:lightline_tabfile(tabnum)
   return l:filename
 endfunction
 
-let s:SID = helpers#get_SID(expand("<sfile>"))
+let s:SID = commons#get_SID(expand("<sfile>"))
 let g:lightline.component_function = {
       \"branch": "<SNR>".s:SID."_lightline_branch",
       \"filename_info": "<SNR>".s:SID."_lightline_filename_info",
