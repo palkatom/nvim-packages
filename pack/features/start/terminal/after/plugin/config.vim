@@ -11,7 +11,7 @@ function! s:terminal_start(mods)
   " Idea is to use -bang attribute to allow adding more terminals to tabpage,
   " but I need to figure out how to handle case when multiple terminals are
   " opened and then closed (t:neoterm_id flag is cleared then)
-  if exists("t:neoterm_id")
+  if exists("t:neoterm_id") && a:mods !~# 'tab'
     execute "Topen"
     return
   endif
@@ -37,12 +37,13 @@ function! s:terminal_start(mods)
   call neoterm#new({"mod": a:mods})
   sleep 200m
   " Go to the working directory
-  call neoterm#do({"cmd": "cd ".l:working_dir.<SID>shell_eol()})
+  call neoterm#do({"cmd": "cd ".l:working_dir.<SID>shell_eol(), "target": g:neoterm.last_id})
   " If pyenv is activated, activate it in terminal as well
   let l:pyenv_name = ""
   if exists("*Programming_PyenvName()")
     let l:pyenv_name = Programming_PyenvName()
   endif
+  " TODO: Windows support
   if !empty(l:pyenv_name) && exists("*Programming_PyenvRootDir()")
     call neoterm#do({"cmd": "source ".Programming_PyenvRootDir()."/bin/activate".<SID>shell_eol()})
   endif
@@ -57,6 +58,6 @@ function! s:get_tab_terminal(terminal_number)
   endif
   return a:terminal_number
 endfunction
-command! -count=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mods": <q-mods>})
+command! -count=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
 
-command! -nargs=0 Texit T exit
+command! -count=0 -nargs=0 Texit call neoterm#do({"cmd": "exit\n".<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
