@@ -1,6 +1,11 @@
 let g:neoterm_default_mod = "botright"
 let g:neoterm_autoscroll = 1
 let g:neoterm_term_per_tab = 1
+let g:neoterm_autoinsert = 1
+augroup terminal_auto_insert
+  autocmd!
+  autocmd BufEnter term://* startinsert
+augroup end
 
 function! s:get_bufname(bufnr)
   if a:bufnr == 0
