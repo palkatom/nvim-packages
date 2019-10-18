@@ -36,6 +36,7 @@ endfunction
 
 set updatetime=100
 set signcolumn=yes
+let g:gitgutter_diff_args = '--ignore-space-at-eol'
 
 function! s:new_branch(branch_name)
   execute "!git checkout -b ".a:branch_name

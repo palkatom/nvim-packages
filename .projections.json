@@ -1,46 +1,16 @@
 {
-    "pack/setup/opt/setup-*/plugin/setup.vim": {
-        "type": "setup",
+    "pack/features/*/plugin/config.vim": {
+        "type": "featconf",
         "template": [
-            "call setup#init_plugins(feature#{}#plugins)"
-        ]
+            "call commons#features#load_plugins(feature#{basename}#plugins)"
+        ],
+        "alternate": "pack/features/{}/autoload/feature/{basename}.vim"
     },
-    "pack/features/start/*/plugin/config.vim": {
-        "type": "feature",
-        "alternate": "pack/features/start/{}/autoload/feature/{}.vim",
-        "template": [
-            "call feature#helpers#load_plugins(feature#{}#plugins)"
-        ]
-    },
-    "pack/features/opt/*/plugin/config.vim": {
-        "type": "ofeature",
-        "alternate": "pack/features/opt/{}/autoload/feature/{}.vim",
-        "template": [
-            "silent packadd setup-{}",
-            "call feature#helpers#load_plugins(feature#{}#plugins)"
-        ]
-    },
-    "pack/config/opt/config-*/plugin/setup.vim": {
-        "type": "config",
-        "template": [
-            "if exists(\"g:config_{}_loaded\")",
-            "  finish",
-            "endif",
-            "let g:config_{}_loaded = 1"
-        ]
-    },
-    "**/autoload/feature/*.vim": {
-        "type": "list",
+    "pack/features/**/autoload/feature/*.vim": {
+        "type": "featplugs",
         "template": [
             "let feature#{basename}#plugins = []"
-        ]
-    },
-    "**/autoload/health/feature_*.vim": {
-        "type": "health",
-        "template": [
-            "function! health#feature_{basename}#check()",
-            "  call health_helpers#check_submodules_initialized(g:feature#{basename}#plugins)",
-            "endfunction"
-        ]
+        ],
+        "alternate": "pack/features/{dirname|dirname}/{basename}/plugin/config.vim"
     }
 }

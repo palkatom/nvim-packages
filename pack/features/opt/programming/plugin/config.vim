@@ -21,7 +21,7 @@ if executable("clangd-8")
     autocmd User lsp_setup call lsp#register_server({
           \"name": "clangd",
           \"cmd": {server_info->["clangd-8", "-background-index"]},
-          \"whitelist": ["cpp", "cc", "objc", "objcpp", "c"]
+          \"whitelist": ["cpp", "h"]
           \})
   augroup end
 endif
