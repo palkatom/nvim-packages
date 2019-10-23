@@ -67,4 +67,10 @@ function! s:get_tab_terminal(terminal_number)
 endfunction
 command! -count=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
 
-command! -count=0 -nargs=0 Texit call neoterm#do({"cmd": <SID>clear_line_command()."exit".<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
+function! s:terminal_exit(terminal_id, mods)
+  call neoterm#do({"cmd": <SID>clear_line_command()."exit".<SID>shell_eol(),
+        \"target": <SID>get_tab_terminal(a:terminal_id),
+        \"mod": a:mods
+        \})
+endfunction
+command! -count=0 -nargs=0 Texit call <SID>terminal_exit(<count>, <q-mods>)
