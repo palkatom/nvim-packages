@@ -19,6 +19,11 @@ function! s:load_plugin(plugin)
   " load plugin
   execute "runtime! ".a:plugin."/ftdetect/**/*.vim"
   execute "runtime! ".a:plugin."/plugin/**/*.vim"
+  " generate help tags for loaded plugins
+  let l:plugin_doc_dir = expand(g:config#plugins#directory."/".a:plugin."/doc")
+  if isdirectory(l:plugin_doc_dir)
+    execute "helptags ".g:config#plugins#directory."/".a:plugin."/doc"
+  endif
   " Remove plugins directory
   let &runtimepath = join(split(&runtimepath, ",")[1:], ",")
 endfunction
