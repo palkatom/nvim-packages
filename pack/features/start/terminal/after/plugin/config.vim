@@ -5,6 +5,13 @@ function! s:shell_eol()
     return ""
   endif
 endfunction
+function! s:clear_line_command()
+  if &shell =~# "bash"
+    return "\u0005\u0015" " Ctrl-E Ctrl-U
+  elseif &shell =~# "cmd.exe"
+    return "\u001b" " Esc
+  endif
+endfunction
 function! s:terminal_start(mods)
   " Do not open new terminal if there is already one in a tabpage, open it
   " instead (may be not the best idea - FIXME)
@@ -60,4 +67,4 @@ function! s:get_tab_terminal(terminal_number)
 endfunction
 command! -count=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
 
-command! -count=0 -nargs=0 Texit call neoterm#do({"cmd": "exit\n".<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
+command! -count=0 -nargs=0 Texit call neoterm#do({"cmd": <SID>clear_line_command()."exit".<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})

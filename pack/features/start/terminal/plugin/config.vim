@@ -5,6 +5,7 @@ let g:neoterm_autoinsert = 1
 augroup terminal_auto_insert
   autocmd!
   autocmd BufEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
 augroup end
 
 function! s:get_bufname(bufnr)
