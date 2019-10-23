@@ -60,11 +60,42 @@ command! -bar Tnew call <SID>terminal_start(<q-mods>)
 function! s:get_tab_terminal(terminal_number)
   " FIXME How to handle multiple tabpage terminals (see comment for
   " terminal_start function)
-  if exists("t:neoterm_id")
+  if a:terminal_number == 0 && exists("t:neoterm_id")
     return t:neoterm_id
   endif
   return a:terminal_number
 endfunction
 command! -count=0 -complete=shellcmd -nargs=+ T call neoterm#do({"cmd": <q-args>.<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
 
-command! -count=0 -nargs=0 Texit call neoterm#do({"cmd": <SID>clear_line_command()."exit".<SID>shell_eol(), "target": <SID>get_tab_terminal(<count>), "mod": <q-mods>})
+function! s:terminal_exit(terminal_id, mods)
+  let l:terminal_id = s:get_tab_terminal(a:terminal_id)
+  function! s:close_terminal(terminal_id, mods)
+    call neoterm#do({"cmd": <SID>clear_line_command()."exit".<SID>shell_eol(),
+          \"target": a:terminal_id,
+          \"mod": a:mods
+          \})
+  endfunction
+  " Ensure terminal_id exists
+  if !has_key(g:neoterm.instances, l:terminal_id)
+    return
+  endif
+  let l:buffer_id = g:neoterm.instances[l:terminal_id].buffer_id
+  " Find tabpage with given terminal id
+  for tabpage in range(1, tabpagenr("$"))
+    let l:tabpagebuffers = uniq(sort(tabpagebuflist(tabpage)))
+    if index(l:tabpagebuffers, l:buffer_id) >= 0
+      " Is it the only buffer in tabpage?
+      if len(l:tabpagebuffers) == 1
+        " Terminal is the only buffer, prevent closing tabpage prematurely
+        execute tabpage."tabdo new"
+        call s:close_terminal(l:terminal_id, a:mods)
+        call wait(500, 'tabpagewinnr(tabpage, "$") == 1', 50)
+        execute tabpage."tabdo tabclose"
+      else
+        call s:close_terminal(l:terminal_id, a:mods)
+      endif
+      break
+    endif
+  endfor
+endfunction
+command! -count=0 -nargs=0 Texit call <SID>terminal_exit(<count>, <q-mods>)
