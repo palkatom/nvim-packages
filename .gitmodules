@@ -77,8 +77,8 @@
     path = pack/plugins/asyncomplete-necosyntax.vim
     url = https://github.com/prabirshrestha/asyncomplete-necosyntax.vim
 [submodule "pack/plugins/neco-vim"]
-	path = pack/plugins/neco-vim
-	url = https://github.com/Shougo/neco-vim
+    path = pack/plugins/neco-vim
+    url = https://github.com/Shougo/neco-vim
 [submodule "pack/plugins/asyncomplete-necovim.vim"]
-	path = pack/plugins/asyncomplete-necovim.vim
-	url = https://github.com/prabirshrestha/asyncomplete-necovim.vim
+    path = pack/plugins/asyncomplete-necovim.vim
+    url = https://github.com/prabirshrestha/asyncomplete-necovim.vim
