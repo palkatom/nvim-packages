@@ -6,7 +6,7 @@ function! s:find_in_git_files_first()
     execute "Files"
   endif
 endfunction
-nnoremap <silent> <c-s>f :call <SID>find_in_git_files_first()<cr>
+nnoremap <silent> <leader>sf :call <SID>find_in_git_files_first()<cr>
 
 function! s:find_git_branches()
   " Does not create branches #TODO
@@ -26,8 +26,8 @@ function! s:find_git_branches()
   call fzf#run(fzf#wrap(l:dict))
 endfunction
 command! -nargs=0 Branches call <SID>find_git_branches()
-nnoremap <silent> <c-s>gb :Branches<cr>
+nnoremap <silent> <leader>sgb :Branches<cr>
 
-nnoremap <silent> <c-s>b :Buffers<cr>
+nnoremap <silent> <leader>sb :Buffers<cr>
 
 call commons#features#load_plugins(feature#finder#plugins)
