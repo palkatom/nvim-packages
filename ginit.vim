@@ -1,10 +1,7 @@
 if exists("g:GuiLoaded")
-  if has("win32") || has("win64")
-    call GuiClipboard()
-
-    GuiTabline 0
-    GuiPopupmenu 0
-  endif
+  call GuiClipboard()
+  GuiTabline 0
+  GuiPopupmenu 0
   call GuiWindowMaximized(1)
   call GuiMousehide(1)
 
