@@ -82,9 +82,12 @@
 [submodule "pack/plugins/asyncomplete-necovim.vim"]
     path = pack/plugins/asyncomplete-necovim.vim
     url = https://github.com/prabirshrestha/asyncomplete-necovim.vim
-[submodule "pack/plugins/paredit.vim"]
-	path = pack/plugins/paredit.vim
-	url = https://github.com/vim-scripts/paredit.vim
 [submodule "pack/plugins/rainbow"]
 	path = pack/plugins/rainbow
 	url = https://github.com/luochen1990/rainbow
+[submodule "pack/plugins/vim-repeat"]
+	path = pack/plugins/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "pack/plugins/paredit.vim"]
+	path = pack/plugins/paredit.vim
+	url = https://github.com/vim-scripts/paredit.vim
