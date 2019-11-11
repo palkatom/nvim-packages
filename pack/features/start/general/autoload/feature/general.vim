@@ -7,4 +7,5 @@ let feature#general#plugins = [
       \"vim-sneak",
       \"vim-commentary",
       \"vim-vinegar",
+      \"vim-repeat",
       \]

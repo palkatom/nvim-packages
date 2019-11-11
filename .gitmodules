@@ -85,3 +85,6 @@
 [submodule "pack/plugins/rainbow"]
 	path = pack/plugins/rainbow
 	url = https://github.com/luochen1990/rainbow
+[submodule "pack/plugins/vim-repeat"]
+	path = pack/plugins/vim-repeat
+	url = https://github.com/tpope/vim-repeat
