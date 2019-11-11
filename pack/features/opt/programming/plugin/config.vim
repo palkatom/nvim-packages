@@ -25,5 +25,15 @@ if executable("clangd-8")
           \})
   augroup end
 endif
+if executable("clojure-lsp")
+  augroup clojure_lsp
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \"name": "clojure-lsp",
+          \"cmd": {server_info->["clojure-lsp"]},
+          \"whitelist": ["clojure"]
+          \})
+  augroup end
+endif
 " Enable LSP explicitly as it can be loaded on-demand
 call lsp#enable()

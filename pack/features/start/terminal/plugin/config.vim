@@ -24,11 +24,19 @@ endfunction
 
 function! Terminal_Name(bufnr)
   let l:bufname = s:get_bufname(a:bufnr)
-  return matchstr(split(l:bufname)[0], '\v\/\zs[^/]*$')
+  let l:name = matchstr(split(l:bufname)[0], '\v\/\zs[^/]*$')
+  if Terminal_IsTermBuffer(a:bufnr) && exists("t:neoterm_id")
+    return l:name.":#".t:neoterm_id
+  endif
+  return l:name
 endfunction
 
 function! Terminal_Type()
   return "neoterm"
 endfunction
+
+nmap <leader>tl :TREPLSendLine<cr>
+nmap <leader>tf :TREPLSendFile<cr>
+vmap <leader>t  :TREPLSendSelection<cr>
 
 call commons#features#load_plugins(feature#terminal#plugins)
