@@ -88,3 +88,6 @@
 [submodule "pack/plugins/vim-repeat"]
 	path = pack/plugins/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "pack/plugins/paredit.vim"]
+	path = pack/plugins/paredit.vim
+	url = https://github.com/vim-scripts/paredit.vim
