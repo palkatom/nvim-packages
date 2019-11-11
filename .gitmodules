@@ -85,3 +85,6 @@
 [submodule "pack/plugins/paredit.vim"]
 	path = pack/plugins/paredit.vim
 	url = https://github.com/vim-scripts/paredit.vim
+[submodule "pack/plugins/rainbow"]
+	path = pack/plugins/rainbow
+	url = https://github.com/luochen1990/rainbow
