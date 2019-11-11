@@ -35,4 +35,8 @@ function! Terminal_Type()
   return "neoterm"
 endfunction
 
+nmap <leader>tl :TREPLSendLine<cr>
+nmap <leader>tf :TREPLSendFile<cr>
+vmap <leader>t  :TREPLSendSelection<cr>
+
 call commons#features#load_plugins(feature#terminal#plugins)
