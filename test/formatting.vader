@@ -1,8 +1,48 @@
 Given (Some text in buffer):
   text
 
-Do (Insert tabat the begining of line):
+# expandtab is set and softtabstop is equal 4
+Do (Insert tab at the beginning of line):
   I\<tab>
 
-Expect (Text is indented with 4 spaces):
+Expect (Tab is expanded to 4 spaces):
       text
+
+# shiftwidth is set to 4 and shiftround is set
+Do (Insert space character before text and shift to right):
+  I\<space>\<esc>>>
+
+Expect (Text is moved 4 spaces right):
+      text
+
+# code is automatically indented
+Given python (Empty buffer):
+
+Do (Insert some python code):
+  idef test():\<cr>return 0
+
+Expect (Code indented automatically):
+  def test():
+      return 0
+
+# matching closing braces inserted automatically
+Given java (Empty buffer):
+
+Do (Insert some java code):
+  iclass A {\<cr>private int a;}
+
+Expect (Code indented automatically):
+  class A {
+      private int a;
+  }
+
+Given (Some text in buffer):
+  text
+
+Do (Insert spaces at the end of line and write file):
+  A\<space>\<tab>\<esc>
+# need to trigger autocmd manually as writing is not supported
+  :doautocmd BufWrite\<cr>
+
+Expect (Space at the EOL is removed):
+  text
