@@ -1,0 +1,8 @@
+Given (Some text in buffer):
+  text
+
+Do (Insert tabat the begining of line):
+  I\<tab>
+
+Expect (Text is indented with 4 spaces):
+      text
