@@ -29,5 +29,7 @@ Given (Some text with '/' in buffer):
 Do (Visually select whole WORD and search for it):
   ^vE
   g/
+# to avoid waiting for Enter before redrawing screen
+  :redraw\<cr>
 Then (Whole WORD (including '/') should be searched for):
   AssertEqual "te/xt", xolox#misc#str#unescape(@/)
