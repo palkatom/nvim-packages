@@ -1,0 +1,54 @@
+# just checking if mappings are set, no validation what they actually do
+Execute (Check for mappings moving between windows in normal mode):
+  let mapping = execute("nmap <a-h>")
+  Assert mapping =~ '\v\c\s+\<c-w\>h$'
+  let mapping = execute("nmap <a-j>")
+  Assert mapping =~ '\v\c\s+\<c-w\>j$'
+  let mapping = execute("nmap <a-k>")
+  Assert mapping =~ '\v\c\s+\<c-w\>k$'
+  let mapping = execute("nmap <a-l>")
+  Assert mapping =~ '\v\c\s+\<c-w\>l$'
+Execute (Check for mappings moving between windows in insert mode):
+  let mapping = execute("imap <a-h>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>h$'
+  let mapping = execute("imap <a-j>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>j$'
+  let mapping = execute("imap <a-k>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>k$'
+  let mapping = execute("imap <a-l>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>l$'
+Execute (Check for mappings moving between windows in terminal mode):
+  let mapping = execute("tmap <a-h>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>h$'
+  let mapping = execute("tmap <a-j>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>j$'
+  let mapping = execute("tmap <a-k>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>k$'
+  let mapping = execute("tmap <a-l>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>\<c-w\>l$'
+  let mapping = execute("tmap <c-w>")
+  Assert mapping =~ '\v\c\s+\<c-\\\>\<c-n\>$'
+Execute (Check for mappings moving cursor in line):
+  let mapping = execute("nmap H")
+  Assert mapping =~ '\v\c\s+\^$'
+  let mapping = execute("nmap L")
+  Assert mapping =~ '\v\c\s+\$$'
+Execute (Check for more convenient mappings in completion selection):
+  let mapping = execute("imap <c-j>")
+  Assert mapping =~ '\v\c\s+\<c-n\>$'
+  let mapping = execute("imap <c-k>")
+  Assert mapping =~ '\v\c\s+\<c-p\>$'
+Execute (Check for mappings moving between tabs):
+  let mapping = execute("nmap [t")
+  Assert mapping =~ '\v\c\s+:tabprevious\<cr\>$'
+  let mapping = execute("nmap ]t")
+  Assert mapping =~ '\v\c\s+:tabnext\<cr\>$'
+  let mapping = execute("nmap [T")
+  Assert mapping =~ '\v\c\s+:tabfirst\<cr\>$'
+  let mapping = execute("nmap ]T")
+  Assert mapping =~ '\v\c\s+:tablast\<cr\>$'
+Execute (Check for mappings moving between quickfix list entries):
+  let mapping = execute("nmap [q")
+  Assert mapping =~ '\v\c\s+:cprevious\<cr\>$'
+  let mapping = execute("nmap ]q")
+  Assert mapping =~ '\v\c\s+:cnext\<cr\>$'

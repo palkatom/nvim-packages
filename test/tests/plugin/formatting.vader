@@ -65,7 +65,7 @@ Do (Insert empty lines before and after first line):
   ]\<space>
   ]\<space>
 Then (Cursor position is maintained (within the line)):
-  AssertEqual getcurpos()[1:2], [2, 4]
+  AssertEqual [2, 4], getcurpos()[1:2]
 Expect (Empty lines are inserted):
 
   line 1
