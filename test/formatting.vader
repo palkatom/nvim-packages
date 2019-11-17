@@ -4,33 +4,29 @@ Given (Some text in buffer):
 # expandtab is set and softtabstop is equal 4
 Do (Insert tab at the beginning of line):
   I\<tab>
-
 Expect (Tab is expanded to 4 spaces):
       text
 
 # shiftwidth is set to 4 and shiftround is set
 Do (Insert space character before text and shift to right):
   I\<space>\<esc>>>
-
 Expect (Text is moved 4 spaces right):
       text
 
-# code is automatically indented
 Given python (Empty buffer):
 
+# code is automatically indented
 Do (Insert some python code):
   idef test():\<cr>return 0
-
 Expect (Code indented automatically):
   def test():
       return 0
 
-# matching closing braces inserted automatically
 Given java (Empty buffer):
 
+# matching closing braces inserted automatically
 Do (Insert some java code):
   iclass A {\<cr>private int a;}
-
 Expect (Code indented automatically):
   class A {
       private int a;
@@ -39,10 +35,40 @@ Expect (Code indented automatically):
 Given (Some text in buffer):
   text
 
+# whitespace characters at the end of file are trimmed when writing
 Do (Insert spaces at the end of line and write file):
   A\<space>\<tab>\<esc>
 # need to trigger autocmd manually as writing is not supported
   :doautocmd BufWrite\<cr>
-
 Expect (Space at the EOL is removed):
   text
+
+# tabs are replaces with spaces when writing
+Do (Indent text using tab characters):
+  :let @a = "\<tab>"\<cr>
+  ^"a2P
+# need to trigger autocmd manually as writing is not supported
+  :doautocmd BufWrite\<cr>
+Expect (Tab characters are replaced with spaces):
+          text
+
+Given (Two lines of text in buffer):
+  line 1
+  line 2
+
+# mapping for adding empty lines before and after given line
+# cursor position is maintained
+Do (Insert empty lines before and after first line):
+# move to the end of word to validate maintaining cursor position
+  gg0e
+  [\<space>
+  ]\<space>
+  ]\<space>
+Then (Cursor position is maintained (within the line)):
+  AssertEqual getcurpos()[1:2], [2, 4]
+Expect (Empty lines are inserted):
+
+  line 1
+
+
+  line 2
