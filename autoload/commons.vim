@@ -7,5 +7,5 @@ function! commons#get_SID(path)
       return l:SID
     endif
   endfor
-  return 0
+  return "0"
 endfunction

@@ -1,0 +1,3 @@
+Execute (config#vim_home exists and is an existing directory):
+  Assert exists("config#vim_home")
+  Assert isdirectory(config#vim_home)

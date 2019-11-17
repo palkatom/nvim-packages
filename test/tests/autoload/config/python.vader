@@ -1,0 +1,5 @@
+Execute (config#python#py{2,3}_env_dir exist and are existing directories):
+  Assert exists("config#python#py2_env_dir")
+  Assert exists("config#python#py3_env_dir")
+  Assert isdirectory(config#python#py2_env_dir)
+  Assert isdirectory(config#python#py3_env_dir)

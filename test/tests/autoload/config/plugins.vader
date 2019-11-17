@@ -1,0 +1,3 @@
+Execute (config#plugins#directory exists and is an existing directory):
+  Assert exists("config#plugins#directory")
+  Assert isdirectory(config#plugins#directory)

@@ -1,0 +1,4 @@
+Execute (commons#get_SID gets id for loaded script file):
+  Assert exists("*commons#get_SID()")
+  AssertEqual "1", commons#get_SID("init.vim"), "init.vim should always be loaded with id '1'"
+  AssertEqual "0", commons#get_SID("non-existing-script-file"), "'0' is returned for not existing script file"

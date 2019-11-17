@@ -1,0 +1,17 @@
+Given vim (Test vimscript file):
+  let g:test_message = "test vimscript"
+Execute (Load file as plugin):
+  Assert exists("*commons#features#load_plugins()")
+  silent !mkdir -p test/tmp/test/plugin
+  silent write test/tmp/test/plugin/test.vim
+  let conf_plug_dir = g:config#plugins#directory
+  let g:config#plugins#directory = "test/tmp"
+  call commons#features#load_plugins(['test'])
+  Assert index(split(&runtimepath, ","), g:config#plugins#directory."/test") >= 0
+  Assert index(split(&runtimepath, ","), g:config#plugins#directory."/test/after") >= 0
+  Assert index(split(&runtimepath, ","), g:config#plugins#directory) < 0
+  Assert exists("g:test_message")
+  AssertEqual "test vimscript", g:test_message
+  Assert index(map(split(execute("scriptnames"), "\n"), 'split(v:val)[-1]'), fnamemodify(g:config#plugins#directory."/test/plugin/test.vim", ":~")) >= 0
+  silent !rm -fr test/tmp
+  let g:config#plugins#directory = conf_plug_dir
