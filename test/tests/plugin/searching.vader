@@ -24,3 +24,10 @@ Do (Visually select some text and trigger mapping for searching it):
   g/
 Then (Selected text should be searched for):
   AssertEqual "te", @/
+Given (Some text with '/' in buffer):
+  te/xt
+Do (Visually select whole WORD and search for it):
+  ^vE
+  g/
+Then (Whole WORD (including '/') should be searched for):
+  AssertEqual "te/xt", xolox#misc#str#unescape(@/)

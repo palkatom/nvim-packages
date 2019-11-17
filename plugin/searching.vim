@@ -6,4 +6,4 @@ augroup highlight_searches
   autocmd CmdLineLeave /,\? set nohlsearch
 augroup end
 
-vnoremap g/ y/<c-r>"<cr>
+vnoremap g/ y/<c-r>=escape(@", '/')<cr><cr>
