@@ -1,0 +1,5 @@
+# just checking if python executables are available
+# extended tests are performed by `:checkhealth` command
+Execute (Check if python_host_prog variables point to executables):
+  Assert executable(g:python_host_prog)
+  Assert executable(g:python3_host_prog)

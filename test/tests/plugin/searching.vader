@@ -1,0 +1,26 @@
+Given (Some text with pattern to search for):
+  text
+  Pattern
+  more text
+Execute (Check ignorecase and smartcase settings):
+  /pattern
+  /Pattern
+  AssertThrows /Text
+Execute (Check highlighting searches is turn off):
+  AssertEqual "nohlsearch", trim(execute("set hlsearch?"))
+Do (Start searching and record search highlight setting):
+  /pat\<c-r>=execute("let g:hl=&hlsearch")\<cr>
+Then (Highlight searching should be turned on during searching):
+  AssertEqual 1, g:hl
+Do (Enter full pattern to search):
+  /pattern\<cr>
+Then (After pattern entered highlighting should be turned off):
+  AssertEqual "nohlsearch", trim(execute("set hlsearch?"))
+
+Given (Some text in buffer):
+  text
+Do (Visually select some text and trigger mapping for searching it):
+  ^vl
+  g/
+Then (Selected text should be searched for):
+  AssertEqual "te", @/
