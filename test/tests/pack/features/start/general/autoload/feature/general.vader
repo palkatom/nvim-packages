@@ -7,5 +7,5 @@ Execute (Each entry in plugins list is a plugin (non-empty directory that is git
     let plugin_directory = g:config#plugins#directory."/".plugin."/"
     Assert index(git_submodules, plugin_directory) >= 0
     Assert isdirectory(plugin_directory)
-    Assert !empty(system("ls ".plugin_directory))
+    Assert !empty(system("ls -A ".plugin_directory)), plugin_directory." shouldn't be empty"
   endfor
