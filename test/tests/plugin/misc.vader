@@ -1,0 +1,4 @@
+Do (Very simple moving around wildmenu):
+  :e test/\<tab>\<up>\<up>\<cr>
+Then (Last directory under `test/` should be opened):
+  AssertEqual "test/vader", bufname()

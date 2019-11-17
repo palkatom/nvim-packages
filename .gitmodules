@@ -91,3 +91,6 @@
 [submodule "pack/plugins/paredit.vim"]
 	path = pack/plugins/paredit.vim
 	url = https://github.com/vim-scripts/paredit.vim
+[submodule "test/vader"]
+	path = test/vader
+	url = https://github.com/junegunn/vader.vim
