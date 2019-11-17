@@ -1,0 +1,35 @@
+Given (Some text in buffer):
+  line 1
+  line 2
+  line 3
+Execute (Validate that cursorline and colorcolumn are set):
+  AssertEqual 1, &cursorline
+  Assert index(split(&colorcolumn, ","), "75") < 0
+  Assert index(split(&colorcolumn, ","), "80") >= 0
+  Assert index(split(&colorcolumn, ","), "85") < 0
+  Assert index(split(&colorcolumn, ","), "120") >= 0
+  Assert index(split(&colorcolumn, ","), "125") >= 0
+  AssertEqual 881, len(split(&colorcolumn, ","))
+Execute (Leave window and check that cursorline is not set):
+  doautocmd WinLeave
+Then (Cursorline is not set and each column is colored):
+  AssertEqual 0, &cursorline
+  AssertEqual 999, len(split(&colorcolumn, ","))
+Execute (Enter window and enable diff):
+  doautocmd WinEnter
+  AssertEqual 1, &cursorline
+  diffthis
+Then (Cursorline is not set):
+  AssertEqual 0, &cursorline
+Execute (Leave window when diff is set):
+  doautocmd WinLeave
+Then (Cursorline is not set):
+  AssertEqual 0, &cursorline
+Execute (Enter window when diff is set):
+  doautocmd WinEnter
+Then (Cursorline is not set):
+  AssertEqual 0, &cursorline
+Execute (Disable diff):
+  diffoff
+Then (Cursorline is set):
+  AssertEqual 1, &cursorline
