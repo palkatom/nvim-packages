@@ -1,0 +1,24 @@
+# just check if mappings are set, no validation what they actually do
+Execute (Check yanking/pasting from/to clipboard mappings):
+  let mapping = execute("nmap gy")
+  Assert mapping =~ '\v\c\s+"\+y$'
+  let mapping = execute("nmap gY")
+  Assert mapping =~ '\v\c\s+"\+Y$'
+  let mapping = execute("nmap gp")
+  Assert mapping =~ '\v\c\s+"\+p$'
+  let mapping = execute("nmap gP")
+  Assert mapping =~ '\v\c\s+"\+P$'
+  let mapping = execute("nmap gop")
+  Assert mapping =~ '\v\c\s+o\<esc\>"\+p$'
+  let mapping = execute("nmap gOp")
+  Assert mapping =~ '\v\c\s+O\<esc\>"\+p$'
+  let mapping = execute("nmap goP")
+  Assert mapping =~ '\v\c\s+o\<esc\>"\+P$'
+  let mapping = execute("nmap gOP")
+  Assert mapping =~ '\v\c\s+O\<esc\>"\+P$'
+  let mapping = execute("imap <c-v>")
+  Assert mapping =~ '\v\c\s+\<esc\>"\+gpa$'
+  let mapping = execute("imap <c-g><c-v>")
+  Assert mapping =~ '\v\c\s+\<c-v\>$'
+  let mapping = execute("vmap <c-v>")
+  Assert mapping =~ '\v\c\s+"\+p'
