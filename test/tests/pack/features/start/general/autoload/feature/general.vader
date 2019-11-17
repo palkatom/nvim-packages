@@ -1,0 +1,11 @@
+Execute (List of general plugins exists):
+  Assert exists("feature#general#plugins")
+  AssertEqual type([]), type(feature#general#plugins)
+Execute (Each entry in plugins list is a plugin (non-empty directory that is git submodule)):
+  let git_submodules = map(split(trim(system("git config --file .gitmodules --get-regexp path | awk '{ print $2 }'")), "\n"), 'fnamemodify(v:val, ":p")')
+  for plugin in g:feature#general#plugins
+    let plugin_directory = g:config#plugins#directory."/".plugin."/"
+    Assert index(git_submodules, plugin_directory) >= 0
+    Assert isdirectory(plugin_directory)
+    Assert !empty(system("ls ".plugin_directory))
+  endfor
