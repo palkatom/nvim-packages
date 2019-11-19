@@ -1,0 +1,4 @@
+Execute:
+  let test_feature_plugins_name = "feature#general#plugins"
+  echomsg g:vader_file
+Include: _all_autoload_feature.vader.common

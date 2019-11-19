@@ -1,0 +1,15 @@
+# This is meant to be included in autoload/feature/<plugin>.vader tests, not run as a separate test
+Before (Exit if test_feature_plugins_name not set (nothing to test)):
+  Assert exists("test_feature_plugins_name")
+Execute (List of general plugins exists):
+  Assert exists(test_feature_plugins_name)
+  let test_feature_plugins = eval(test_feature_plugins_name)
+  AssertEqual type([]), type(test_feature_plugins)
+Execute (Each entry in plugins list is a plugin (non-empty directory that is git submodule)):
+  let git_submodules = map(split(trim(system("git config --file .gitmodules --get-regexp path | awk '{ print $2 }'")), "\n"), 'fnamemodify(v:val, ":p")')
+  for plugin in test_feature_plugins
+    let plugin_directory = g:config#plugins#directory."/".plugin."/"
+    Assert index(git_submodules, plugin_directory) >= 0
+    Assert isdirectory(plugin_directory)
+    Assert !empty(system("ls -A ".plugin_directory)), plugin_directory." shouldn't be empty"
+  endfor
