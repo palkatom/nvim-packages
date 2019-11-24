@@ -1,4 +1,4 @@
-Execute:
+Execute (Set plugin list to test (general)):
   let test_feature_plugins_name = "feature#general#plugins"
   echomsg g:vader_file
-Include: _all_autoload_feature.vader.common
+Include: _common/plugin_list._vader

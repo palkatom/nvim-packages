@@ -1,0 +1,26 @@
+Given (Some text in buffer):
+  This is a sample line.
+  Another line.
+Do (vim-surround: add surround):
+  ysiw"
+Expect (Current word is quoted):
+  "This" is a sample line.
+  Another line.
+Given (There is a surrounded text in buffer):
+  "words surrounded"
+Do (vim-surround: change surround):
+  cs")
+Expect (Surround is changed):
+  (words surrounded)
+Given (There is a surrounded text in buffer):
+  "word"
+Do (vim-surround: delete surround):
+  ds"
+Expect (Surround is removed):
+  word
+Given (Some text in buffer):
+  Sample text
+Do (Select some text and surround it):
+  wviwS]
+Expect (Selected word is surrounded):
+  Sample [text]

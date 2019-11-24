@@ -1,4 +1,4 @@
-# This is meant to be included in autoload/feature/<plugin>.vader tests, not run as a separate test
+# This is meant to be included in feature/autoload/<plugin>.vader tests, not run as a separate test
 Before (Exit if test_feature_plugins_name not set (nothing to test)):
   Assert exists("test_feature_plugins_name")
 Execute (List of general plugins exists):
@@ -13,3 +13,5 @@ Execute (Each entry in plugins list is a plugin (non-empty directory that is git
     Assert isdirectory(plugin_directory)
     Assert !empty(system("ls -A ".plugin_directory)), plugin_directory." shouldn't be empty"
   endfor
+Execute (After file):
+  unlet test_feature_plugins_name
