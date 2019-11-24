@@ -136,18 +136,18 @@ function! s:lightline_tabfile(tabnum)
   return l:filename
 endfunction
 
-let s:SID = commons#get_SID(expand("<sfile>"))
+let s:SID = "<SNR>".commons#get_SID(expand("<sfile>"))."_"
 let g:lightline.component_function = {
-      \"branch": "<SNR>".s:SID."_lightline_branch",
-      \"filename_info": "<SNR>".s:SID."_lightline_filename_info",
-      \"session": "<SNR>".s:SID."_lightline_session",
-      \"pyenv": "<SNR>".s:SID."_lightline_pyenv",
-      \"file_info": "<SNR>".s:SID."_lightline_file_info",
-      \"location": "<SNR>".s:SID."_lightline_location",
+      \"branch": s:SID."lightline_branch",
+      \"filename_info": s:SID."lightline_filename_info",
+      \"session": s:SID."lightline_session",
+      \"pyenv": s:SID."lightline_pyenv",
+      \"file_info": s:SID."lightline_file_info",
+      \"location": s:SID."lightline_location",
       \}
 let g:lightline.tab_component_function = {
-      \"tabinfo": "<SNR>".s:SID."_lightline_tabinfo",
-      \"tabfile": "<SNR>".s:SID."_lightline_tabfile",
+      \"tabinfo": s:SID."lightline_tabinfo",
+      \"tabfile": s:SID."lightline_tabfile",
       \}
 let g:lightline.active = {}
 let g:lightline.active.left = [

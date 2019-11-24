@@ -9,7 +9,6 @@ endfunction
 nnoremap <silent> <leader>sf :call <SID>find_in_git_files_first()<cr>
 
 function! s:find_git_branches()
-  " Does not create branches #TODO
   let l:dict = {"source": "git branch -a"}
   function! l:dict.sink(lines)
     " Current branch is marked with '*' - do nothing in this case

@@ -10,8 +10,4 @@ augroup projectionist_on_init
   autocmd User ProjectionistActivate call <SID>projectionist_run_on_init()
 augroup end
 
-function! Project_RootDir()
-  return projectionist#path()
-endfunction
-
 call commons#features#load_plugins(feature#project#plugins)
