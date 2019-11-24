@@ -15,8 +15,8 @@ let g:lightline.component_type = {
       \}
 
 function! s:lightline_branch()
-  if exists("*Git_Head()")
-    let l:branch_name = Git_Head()
+  try
+    let l:branch_name = feature#git#head()
     if !empty(l:branch_name)
       let l:branch_name = pathshorten(l:branch_name)
       if len(l:branch_name) > 15
@@ -24,7 +24,8 @@ function! s:lightline_branch()
       endif
       return "\u16a0 ".l:branch_name
     endif
-  endif
+  catch
+  endtry
   return ""
 endfunction
 
@@ -41,11 +42,12 @@ function! s:lightline_filename_info()
   if index(s:simple_filename_filetypes, &filetype) >= 0
     return expand("%:t")
   endif
-  if exists("*Git_IsGitBuffer()") && exists("*Git_DiffType()")
-    if Git_IsGitBuffer()
-      return expand("%:t")."@".Git_DiffType()
+  try
+    if feature#git#is_git_buffer()
+      return expand("%:t")."@".feature#git#diff_type()
     endif
-  endif
+  catch
+  endtry
   let l:short_dir = pathshorten(expand("%:p:h"))."/"
   let l:filename = expand("%:t")
   if empty(l:filename)
