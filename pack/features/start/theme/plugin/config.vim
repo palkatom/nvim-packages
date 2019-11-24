@@ -73,12 +73,13 @@ endfunction
 
 function! s:lightline_pyenv()
   " TODO pyenv support (optional)
-  if exists("*Programming_PyenvName()")
-    let l:pyenv_name = Programming_PyenvName()
+  try
+    let l:pyenv_name = feature#programming#pyenv_name()
     if !empty(l:pyenv_name)
       return "<".l:pyenv_name.">"
     endif
-  endif
+  catch
+  endtry
   return ""
 endfunction
 
