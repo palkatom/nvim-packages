@@ -28,9 +28,10 @@ function! s:terminal_start(mods)
   "   current file's directory or
   "   current working directory
   let l:working_dir = ""
-  if exists("*Project_RootDir()")
-    let l:working_dir = Project_RootDir()
-  endif
+  try
+    let l:working_dir = feature#project#root_dir()
+  catch
+  endtry
   if empty(l:working_dir)
     try
       let l:working_dir = feature#git#root_dir()
