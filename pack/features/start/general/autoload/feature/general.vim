@@ -1,9 +1,7 @@
 let feature#general#plugins = [
       \"vim-surround",
       \"vim-polyglot",
-      \"rainbow",
-      \"paredit.vim",
-      \"auto-pairs",
+      \"pear-tree",
       \"vim-easy-align",
       \"vim-sneak",
       \"vim-commentary",
