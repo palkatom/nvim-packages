@@ -31,8 +31,11 @@ function! s:terminal_start(mods)
   if exists("*Project_RootDir()")
     let l:working_dir = Project_RootDir()
   endif
-  if empty(l:working_dir) && exists("*Git_RootDir()")
-    let l:working_dir = Git_RootDir()
+  if empty(l:working_dir)
+    try
+      let l:working_dir = feature#git#root_dir()
+    catch
+    endtry
   endif
   if empty(l:working_dir)
     let l:working_dir = expand("%:p:h")

@@ -25,8 +25,8 @@ function! s:find_git_branches()
   endfunction
   call fzf#run(fzf#wrap(l:dict))
 endfunction
-command! -nargs=0 Branches call <SID>find_git_branches()
-nnoremap <silent> <leader>sgb :Branches<cr>
+command! -nargs=0 Gbranches call <SID>find_git_branches()
+nnoremap <silent> <leader>sgb :Gbranches<cr>
 
 nnoremap <silent> <leader>sb :Buffers<cr>
 

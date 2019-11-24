@@ -15,8 +15,8 @@ let g:lightline.component_type = {
       \}
 
 function! s:lightline_branch()
-  if exists("*Git_Head()")
-    let l:branch_name = Git_Head()
+  try
+    let l:branch_name = feature#git#head()
     if !empty(l:branch_name)
       let l:branch_name = pathshorten(l:branch_name)
       if len(l:branch_name) > 15
@@ -24,16 +24,18 @@ function! s:lightline_branch()
       endif
       return "\u16a0 ".l:branch_name
     endif
-  endif
+  catch
+  endtry
   return ""
 endfunction
 
 function! s:lightline_filename_info()
-  if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
-    if Terminal_IsTermBuffer(0)
-      return "term:".Terminal_Name(0)
+  try
+    if feature#terminal#is_term_buffer(0)
+      return "term:".feature#terminal#name(0)
     endif
-  endif
+  catch
+  endtry
   " Only simple filename for certain filetypes
   let s:simple_filename_filetypes = [
         \"help",
@@ -41,11 +43,12 @@ function! s:lightline_filename_info()
   if index(s:simple_filename_filetypes, &filetype) >= 0
     return expand("%:t")
   endif
-  if exists("*Git_IsGitBuffer()") && exists("*Git_DiffType()")
-    if Git_IsGitBuffer()
-      return expand("%:t")."@".Git_DiffType()
+  try
+    if feature#git#is_git_buffer()
+      return expand("%:t")."@".feature#git#diff_type()
     endif
-  endif
+  catch
+  endtry
   let l:short_dir = pathshorten(expand("%:p:h"))."/"
   let l:filename = expand("%:t")
   if empty(l:filename)
@@ -60,22 +63,23 @@ function! s:lightline_filename_info()
 endfunction
 
 function! s:lightline_session()
-  if exists("*Sessions_Name()")
-    let l:session_name = Sessions_Name()
-  else
-    let l:session_name = ""
-  endif
+  let l:session_name = ""
+  try
+    let l:session_name = feature#sessions#name()
+  catch
+  endtry
   return "$[".l:session_name."]"
 endfunction
 
 function! s:lightline_pyenv()
   " TODO pyenv support (optional)
-  if exists("*Programming_PyenvName()")
-    let l:pyenv_name = Programming_PyenvName()
+  try
+    let l:pyenv_name = feature#programming#pyenv_name()
     if !empty(l:pyenv_name)
       return "<".l:pyenv_name.">"
     endif
-  endif
+  catch
+  endtry
   return ""
 endfunction
 
@@ -88,11 +92,12 @@ function! s:lightline_file_info()
   if index(l:simple_filetypes, &filetype) >= 0
     return l:filetype
   endif
-  if exists("*Terminal_IsTermBuffer()")
-    if Terminal_IsTermBuffer(0)
+  try
+    if feature#terminal#is_term_buffer(0)
       return ""
     endif
-  endif
+  catch
+  endtry
   if winwidth(0) < 90
     return ""
   endif
@@ -118,11 +123,12 @@ endfunction
 function! s:lightline_tabfile(tabnum)
   let l:winnr = tabpagewinnr(a:tabnum)
   let l:bufnr = tabpagebuflist(a:tabnum)[l:winnr - 1]
-  if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
-    if Terminal_IsTermBuffer(l:bufnr)
-      return "term:".Terminal_Name(l:bufnr)
+  try
+    if feature#terminal#is_term_buffer(l:bufnr)
+      return "term:".feature#terminal#name(l:bufnr)
     endif
-  endif
+  catch
+  endtry
   let l:filename = fnamemodify(bufname(l:bufnr), ":t")
   if empty(l:filename)
     return "[No Name]"
@@ -146,21 +152,21 @@ let g:lightline.tab_component_function = {
 let g:lightline.active = {}
 let g:lightline.active.left = [
       \["mode"],
-      \["branch"],
+      \[],
       \["trunc", "filename_info"]
       \]
 let g:lightline.active.right = [
-      \["session", "location"],
-      \[],
-      \["pyenv", "file_info"]
+      \["branch"],
+      \["pyenv", "session"],
+      \["filetype"]
       \]
 let g:lightline.inactive = {}
 let g:lightline.inactive.left = [
-      \["branch", "trunc", "filename_info"],
+      \["trunc", "filename_info"],
       \[]
       \]
 let g:lightline.inactive.right = [
-      \["session"],
+      \["branch"],
       \[]
       \]
 let g:lightline.tab = {}
@@ -184,3 +190,5 @@ highlight! link Folded FoldColumn
 highlight! link VertSplit StatusLineNC
 let &fillchars = "vert:\ "
 highlight! link LightlineMiddle_inactive VertSplit
+highlight! link LightlineLeft_inactive_0 VertSplit
+highlight! link LightlineRight_inactive_0 VertSplit

@@ -8,7 +8,7 @@ if exists("g:GuiLoaded")
   nnoremap <F11> :call GuiWindowFullScreen(!g:GuiWindowFullScreen)<cr>
 
   if has("unix")
-    GuiFont Fira Code:h12
+    GuiFont Fira Mono:h12
   endif
 endif
 
