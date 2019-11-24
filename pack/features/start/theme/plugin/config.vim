@@ -30,11 +30,12 @@ function! s:lightline_branch()
 endfunction
 
 function! s:lightline_filename_info()
-  if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
-    if Terminal_IsTermBuffer(0)
-      return "term:".Terminal_Name(0)
+  try
+    if feature#terminal#is_term_buffer(0)
+      return "term:".feature#terminal#name(0)
     endif
-  endif
+  catch
+  endtry
   " Only simple filename for certain filetypes
   let s:simple_filename_filetypes = [
         \"help",
@@ -62,11 +63,11 @@ function! s:lightline_filename_info()
 endfunction
 
 function! s:lightline_session()
-  if exists("*Sessions_Name()")
-    let l:session_name = Sessions_Name()
-  else
-    let l:session_name = ""
-  endif
+  let l:session_name = ""
+  try
+    let l:session_name = feature#sessions#name()
+  catch
+  endtry
   return "$[".l:session_name."]"
 endfunction
 
@@ -90,11 +91,12 @@ function! s:lightline_file_info()
   if index(l:simple_filetypes, &filetype) >= 0
     return l:filetype
   endif
-  if exists("*Terminal_IsTermBuffer()")
-    if Terminal_IsTermBuffer(0)
+  try
+    if feature#terminal#is_term_buffer(0)
       return ""
     endif
-  endif
+  catch
+  endtry
   if winwidth(0) < 90
     return ""
   endif
@@ -120,11 +122,12 @@ endfunction
 function! s:lightline_tabfile(tabnum)
   let l:winnr = tabpagewinnr(a:tabnum)
   let l:bufnr = tabpagebuflist(a:tabnum)[l:winnr - 1]
-  if exists("*Terminal_IsTermBuffer()") && exists("*Terminal_Name()")
-    if Terminal_IsTermBuffer(l:bufnr)
-      return "term:".Terminal_Name(l:bufnr)
+  try
+    if feature#terminal#is_term_buffer(l:bufnr)
+      return "term:".feature#terminal#name(l:bufnr)
     endif
-  endif
+  catch
+  endtry
   let l:filename = fnamemodify(bufname(l:bufnr), ":t")
   if empty(l:filename)
     return "[No Name]"

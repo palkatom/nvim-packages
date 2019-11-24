@@ -5,8 +5,4 @@ let g:session_autoload = "no"
 let g:session_autosave = "yes"
 let g:session_default_to_last = 1
 
-function! Sessions_Name()
-  return xolox#session#find_current_session()
-endfunction
-
 call commons#features#load_plugins(feature#sessions#plugins)

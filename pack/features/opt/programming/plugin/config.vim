@@ -1,6 +1,7 @@
-if exists("*Terminal_Type()")
-  let g:test#strategy = Terminal_Type()
-endif
+try
+  let g:test#strategy = feature#terminal#type()
+catch
+endtry
 
 call commons#features#load_plugins(feature#programming#plugins)
 
