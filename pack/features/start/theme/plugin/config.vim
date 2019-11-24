@@ -146,21 +146,21 @@ let g:lightline.tab_component_function = {
 let g:lightline.active = {}
 let g:lightline.active.left = [
       \["mode"],
-      \["branch"],
+      \[],
       \["trunc", "filename_info"]
       \]
 let g:lightline.active.right = [
-      \["session", "location"],
-      \[],
-      \["pyenv", "file_info"]
+      \["branch"],
+      \["pyenv", "session"],
+      \["filetype"]
       \]
 let g:lightline.inactive = {}
 let g:lightline.inactive.left = [
-      \["branch", "trunc", "filename_info"],
+      \["trunc", "filename_info"],
       \[]
       \]
 let g:lightline.inactive.right = [
-      \["session"],
+      \["branch"],
       \[]
       \]
 let g:lightline.tab = {}
