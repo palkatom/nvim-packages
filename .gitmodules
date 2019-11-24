@@ -4,9 +4,6 @@
 [submodule "pack/plugins/vim-polyglot"]
     path = pack/plugins/vim-polyglot
     url = https://github.com/sheerun/vim-polyglot
-[submodule "pack/plugins/auto-pairs"]
-    path = pack/plugins/auto-pairs
-    url = https://github.com/jiangmiao/auto-pairs
 [submodule "pack/plugins/vim-easy-align"]
     path = pack/plugins/vim-easy-align
     url = https://github.com/junegunn/vim-easy-align
@@ -82,15 +79,12 @@
 [submodule "pack/plugins/asyncomplete-necovim.vim"]
     path = pack/plugins/asyncomplete-necovim.vim
     url = https://github.com/prabirshrestha/asyncomplete-necovim.vim
-[submodule "pack/plugins/rainbow"]
-	path = pack/plugins/rainbow
-	url = https://github.com/luochen1990/rainbow
 [submodule "pack/plugins/vim-repeat"]
-	path = pack/plugins/vim-repeat
-	url = https://github.com/tpope/vim-repeat
-[submodule "pack/plugins/paredit.vim"]
-	path = pack/plugins/paredit.vim
-	url = https://github.com/vim-scripts/paredit.vim
+    path = pack/plugins/vim-repeat
+    url = https://github.com/tpope/vim-repeat
 [submodule "test/vader"]
-	path = test/vader
-	url = https://github.com/junegunn/vader.vim
+    path = test/vader
+    url = https://github.com/junegunn/vader.vim
+[submodule "pack/plugins/pear-tree"]
+    path = pack/plugins/pear-tree
+    url = https://github.com/tmsvg/pear-tree
