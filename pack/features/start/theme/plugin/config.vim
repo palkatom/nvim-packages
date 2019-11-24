@@ -189,3 +189,5 @@ highlight! link Folded FoldColumn
 highlight! link VertSplit StatusLineNC
 let &fillchars = "vert:\ "
 highlight! link LightlineMiddle_inactive VertSplit
+highlight! link LightlineLeft_inactive_0 VertSplit
+highlight! link LightlineRight_inactive_0 VertSplit
